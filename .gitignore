@@ -62,9 +62,3 @@ target/
 _bin/
 setuptools-*.zip
 
-*.ipynb
-*.db
-
-# local settings
-
-toritos/local_settings*
