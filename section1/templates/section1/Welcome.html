@@ -1,0 +1,28 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bienvenido
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <p>Por haber asistido a esta sesión, usted ya es acreedor a $100 pesos.
+           Adicionalmente, es posible generar mayores ganancias durante el transcurso de
+           la sesión. El pago se realizara en efectivo al final de esta jornada.
+           La cantidad de dinero que pueda ganar depende principalmente de sus
+           decisiones, por este motivo es importante que entienda las instrucciones.
+           Por favor, escuche atentamente y levante la mano para cualquier aclaración.</p>
+        <p><span>Esta sesi&oacute;n consta de </span><span><u><strong>tres secciones</strong></u></span><span>. En total, usted tendr&aacute; que contestar un cuestionario (Secci&oacute;n 3) y tomar una serie de decisiones (Secciones 1 y 2). Su pago final depender&aacute; directamente de sus decisiones y de los dem&aacute;s participantes con los que interact&uacute;e.</span></p>
+        <p><span>Por conveniencia, esta sesi&oacute;n no involucra unidades monetarias sino unidades ECU. Usted tiene la oportunidad de ganar unidades ECU por su desempe&ntilde;o. </span><span><u><strong>10 ECUs equivalen a 1 peso</strong></u></span><span>. Ejemplo, si usted acumula 1,000 ECUs es equivalente a ganar $100 pesos. Usted puede acumular ECUs en las secciones 2 y 3 de esta sesi&oacute;n. Importante, solo en la secci&oacute;n 3 se interact&uacute;a con otros participantes.</span></p>
+        <p><span>Al inicio de cada secci&oacute;n encontrar&aacute; instrucciones detalladas, sin embargo, aqu&iacute; presentamos una breve introducci&oacute;n.</span></p>
+    </div>
+
+    <div class="row">
+        <div class="pull-right">
+            <input type="submit" value="Comenzar" class="btn btn-primary btn-large btn-primary next-button">
+        </div>
+    </div>
+</div>
+{% endblock %}
