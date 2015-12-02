@@ -7,34 +7,10 @@
 
 {% block content %}
 <div class="content">
-    <div class="row text-center alert alert-warning">
-        Tiempo disponible para leer las instrucciones: 
-        <strong>
-            <div id="clock">
-                <span class="clock-part hide days"></span>
-                <span class="clock-part hide ">:</span>
-                <span class="clock-part hours hide "></span>
-                <span class="clock-part hide">:</span>
-                <span class="clock-part minutes"></span>
-                <span class="clock-part">:</span>
-                <span class="clock-part seconds"></span>
-            </div>
-        </strong>
-    </div>
     <div class="row">
         <h3>Instrucciones</h3>
-
         <p><strong>Conteste las siguientes preguntas según sus preferencias personales.</strong>
         Durante esta sección podrá acumular unidades ECU por sus respuestas.</p>
     </div>
 </div>
-
-
-<script>
-    $(document).ready(function(){
-        initializeClock('clock', getDelta({{Constants.instructions_time}}), function(){
-            $("form").submit();
-        });
-    });
-</script>
 {% endblock %}

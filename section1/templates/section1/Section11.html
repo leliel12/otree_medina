@@ -1,0 +1,22 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Seccion 1.1
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <p>
+            <strong>
+                1.1 Usted acaba de ganar 100 ECUs por leer esta pregunta. Ahora debe decidir si apostar en un volado o no. En el volado puede ganar tres veces cada ECU que apueste cuando adivine el resultado y perder lo apostado en caso de no adivinar (águila o sol). ¿Cuánto estaría dispuesto a apostar de sus 100 ECUs?  (Si no apuesta gana 100 ECUs y si apuesta su posible ganancia máxima es de 300 ECUs
+            </strong>
+        </p>
+        <br>
+        <p class="text-center center">
+            {% formfield form.dispuesto_a_apostar%}
+        </p>
+    </div>
+</div>
+{% endblock %}

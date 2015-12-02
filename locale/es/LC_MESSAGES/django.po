@@ -1,0 +1,7 @@
+msgid "{} point"
+msgid_plural "{} points"
+msgstr[0] "{} ECU"
+msgstr[1] "{} ECUs"
+
+msgid "points"
+msgstr "ECU"

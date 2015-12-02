@@ -13,9 +13,7 @@ def vars_for_all_templates(self):
 
 
 class Welcome(Page):
-
-    def before_next_page(self):
-        self.player.instructions_start_time = timezone.now()
+    pass
 
 
 class Instructions(Page):
@@ -23,4 +21,13 @@ class Instructions(Page):
     timeout_seconds = Constants.instructions_time
 
 
-page_sequence = [Welcome, Instructions]
+class Section11(Page):
+
+    form_model = models.Player
+    form_fields = ["dispuesto_a_apostar"]
+
+    def before_next_page(self):
+        self.player.set_payoff_11()
+
+
+page_sequence = [Welcome, Instructions, Section11]
