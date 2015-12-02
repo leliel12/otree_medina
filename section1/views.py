@@ -32,4 +32,8 @@ class Section11(Page):
         self.player.set_payoff_11()
 
 
-page_sequence = [Welcome, Instructions, Section11]
+class Section11Result(Page):
+    pass
+
+
+page_sequence = [Welcome, Instructions, Section11, Section11Result]

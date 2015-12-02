@@ -1,1 +1,1 @@
-otree-core==0.4.17
+git+https://github.com/oTree-org/otree-core.git@51b111e020487eaba3222d55756bba3be9ee9fab#egg=otree-core

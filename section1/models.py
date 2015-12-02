@@ -61,8 +61,6 @@ class Player(otree.models.BasePlayer):
     gano_apuesta = models.BooleanField()
 
 
-
-
     def set_payoff_11(self):
         self.gano_apuesta = random.choice([True, False])
         if self.dispuesto_a_apostar == 0:
