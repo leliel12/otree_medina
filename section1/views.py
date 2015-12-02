@@ -23,6 +23,8 @@ class Instructions(Page):
 
 class Section11(Page):
 
+    timeout_seconds = Constants.section11_time
+
     form_model = models.Player
     form_fields = ["dispuesto_a_apostar"]
 
