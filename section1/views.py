@@ -33,7 +33,8 @@ class Section11(Page):
 
 
 class Section11Result(Page):
-    pass
+
+    timeout_seconds = Constants.result_time
 
 
 page_sequence = [Welcome, Instructions, Section11, Section11Result]

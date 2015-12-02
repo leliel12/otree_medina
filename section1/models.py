@@ -30,6 +30,8 @@ class Constants:
     players_per_group = None
     num_rounds = 1
     initial_payoff = c(100)
+
+    result_time = 60
     instructions_time = 10
     section11_time = 3 * 60 # 3 minutes
 

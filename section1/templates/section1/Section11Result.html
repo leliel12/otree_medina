@@ -1,0 +1,26 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Resultados Sección 1.1
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <p>
+            Usted a apostado <strong>{{player.dispuesto_a_apostar}}</strong>
+            {% if player.dispuesto_a_apostar == 0 %}
+            por lo cual <strong><span class="text-info">HA GANADO {{100|c}}</span></strong>
+            {% elif player.gano_apuesta %}
+            y ha sido elegido <u><strong><span class="text-success">GANADOR</span></strong></u>
+            {% else %}
+            <u><strong><span class="text-danger">Y NO HA GANADO</span></strong></u>
+            {% endif %}
+        </p>
+        <p>
+            <strong>Actualmente posee <span class="text-info">{{player.payoff}}</span></strong>
+        </p>
+    </div>
+</div>
+{% endblock %}
