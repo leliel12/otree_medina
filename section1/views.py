@@ -37,4 +37,25 @@ class Section11Result(Page):
     timeout_seconds = Constants.result_time
 
 
-page_sequence = [Welcome, Instructions, Section11, Section11Result]
+class Section12(Page):
+
+    form_model = models.Player
+    form_fields = [
+        'bolsa_o_25_con_seguridad',
+        'bolsa_o_30_con_seguridad',
+        'bolsa_o_35_con_seguridad',
+        'bolsa_o_40_con_seguridad',
+        'bolsa_o_45_con_seguridad',
+        'bolsa_o_50_con_seguridad',
+        'bolsa_o_55_con_seguridad',
+        'bolsa_o_60_con_seguridad',
+        'bolsa_o_65_con_seguridad',
+        'bolsa_o_70_con_seguridad',
+        'bolsa_o_75_con_seguridad',
+        'bolsa_o_80_con_seguridad']
+
+    def before_next_page(self):
+        self.player.set_payoff_12()
+
+
+page_sequence = [Welcome, Instructions, Section11, Section11Result, Section12]
