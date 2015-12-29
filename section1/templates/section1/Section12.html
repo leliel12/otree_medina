@@ -47,11 +47,12 @@
             var parent_id = $elem.parents("tr").attr("id");
             var parent_idx = parseInt(parent_id.slice(3));
 
-            var idx = parent_idx+1
-            var id = "#tr_" + idx.toString();
-            $(id).find('td.bolsa input:radio').prop('checked', false);
-            $(id).find('td.seguridad input:radio').prop('checked', false);
-            $(id).find('input').prop('disabled', false);
+            for(var idx=parent_idx+1; idx < {{form.fields|length}}; idx++){
+                var id = "#tr_" + idx.toString();
+                $(id).find('td.bolsa input:radio').prop('checked', false);
+                $(id).find('td.seguridad input:radio').prop('checked', false);
+                $(id).find('input').prop('disabled', false);
+            }
         });
 
         $("td.seguridad").change(function(evt){
