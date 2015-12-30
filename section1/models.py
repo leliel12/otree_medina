@@ -34,6 +34,7 @@ class Constants:
     result_time = 60
     instructions_time = 10
     section11_time = 3 * 60 # 3 minutes
+    section12_time = 3 * 60 # 3 minutes
 
 
 class Subsession(otree.models.BaseSubsession):
@@ -124,6 +125,10 @@ class Player(otree.models.BasePlayer):
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "80 ECUs con seguridad")])
     gano_bolsa_o_80_con_seguridad = models.PositiveIntegerField()
 
+    caso_seleccionado_para_12 = models.CharField(max_length=255)
+    color_bola_al_azar = models.CharField(max_length=50, choices=["blanca", "roja"])
+
+
     def set_payoff_11(self):
         self.gano_apuesta = random.choice([True, False])
         if self.dispuesto_a_apostar == 0:
@@ -134,6 +139,12 @@ class Player(otree.models.BasePlayer):
             self.payoff -= self.dispuesto_a_apostar
 
     def set_payoff_12(self):
-        pass
-
-
+        caso_ecus = random.choice([25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80])
+        self.caso_seleccionado_para_12 = "bolsa_o_{}_con_seguridad".format(caso_ecus)
+        seleccion = getattr(self, self.caso_seleccionado_para_12)
+        if seleccion == "seguridad":
+            self.payoff += caso_ecus
+        else:
+            self.color_bola_al_azar = random.choice(["roja", "blanca"])
+            if self.color_bola_al_azar == "blanca":
+                self.payoff += 100

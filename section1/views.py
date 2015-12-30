@@ -40,6 +40,8 @@ class Section11Result(Page):
 
 class Section12(Page):
 
+    timeout_seconds = Constants.section12_time
+
     form_model = models.Player
     form_fields = [
         'bolsa_o_25_con_seguridad',
@@ -58,5 +60,22 @@ class Section12(Page):
     def before_next_page(self):
         self.player.set_payoff_12()
 
+class Section12Result(Page):
 
-page_sequence = [Welcome, Instructions, Section11, Section11Result, Section12]
+    timeout_seconds = Constants.result_time
+
+    def vars_for_template(self):
+        parts = self.player.caso_seleccionado_para_12.split("_")
+        parts.insert(3, "ECUS")
+
+        eligio_seguridad = getattr(
+            self.player, self.player.caso_seleccionado_para_12) == "seguridad"
+
+        return {"caso_as_text": " ".join(parts).title(),
+                "eligio_seguridad": eligio_seguridad,
+                "seguridad_gano": parts[2]}
+
+
+page_sequence = [
+    Welcome, Instructions, Section11, Section11Result,
+    Section12, Section12Result]
