@@ -1,0 +1,39 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Resultados Sección 1.2
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="row">
+        <p>De los 12 casos se ha seleccionado al azar</p>
+        <p class="alert alert-info text-center"><strong>{{caso_as_text}}</strong></p>
+        <p>
+            En el cual usted a elegido
+            <strong class="text-info">
+                {% if eligio_seguridad %}la seguridad{% else %}seleccionar de la bolsa{% endif %}
+            </strong>
+        </p>
+
+        <p>
+            {% if eligio_seguridad %}
+                <strong class="text text-success">Con lo cual usted ha ganado {{seguridad_gano|c}}</strong>
+            {% else %}
+                Y el color de la bola seleccionada ha sido
+                <strong class="text-info">{{player.color_bola_al_azar|title}}</strong>
+                Con lo cual usted
+                {% if player.color_bola_al_azar != "blanco" %}
+                    <strong class="text text-success">ha ganado {{100|c}}</strong>
+                {% else %}
+                    <strong class="text text-danger">no ha ganado ECUs</strong>
+                {% endif %}
+            {% endif %}
+        </p>
+        <p>
+            <strong>Actualmente posee <span class="text-info">{{player.payoff}}</span></strong>
+        </p>
+    </div>
+</div>
+{% endblock %}
