@@ -133,6 +133,12 @@ SESSION_CONFIGS = [
         'display_name': "Section 1",
         'num_demo_participants': 1,
         'app_sequence': ["section1"],
+    },
+    {
+        'name': 'section3',
+        'display_name': "Section 3",
+        'num_demo_participants': 1,
+        'app_sequence': ["questionnaire"],
     }
 ]
 

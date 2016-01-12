@@ -67,3 +67,45 @@ div#time-limit > div > p > span{
     display: block;
     margin-top: 5px;
 }
+
+
+div#questionnaire li {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+}
+
+div#questionnaire input{
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+
+div#questionnaire div.field-container {
+    display:inline-block;
+}
+
+div#questionnaire div.field-container input[type="number"],
+div#questionnaire div.field-container input[type="text"] {
+    width: 250px;
+}
+
+div#questionnaire table td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+div#questionnaire table input[type="number"],
+div#questionnaire table input[type="text"] {
+    margin: 0px;
+}
+
+div#questionnaire div.input-group.slider {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    margin-left: 25%;
+}
+
+div#questionnaire div.input-group.slider input {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}

@@ -1,0 +1,172 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bloque 1
+{% endblock %}
+
+{% block content %}
+<div id="questionnaire" class="row">
+    <ol>
+        <li>
+            <div>{{form.satisfecho_con_la_vida.label}}</div>
+            <div class="">{{form.satisfecho_con_la_vida}}</div>
+        </li>
+        <li>
+            <div>{{form.cuartos_en_el_hogar.label}}</div>
+            <div class="field-container">{{form.cuartos_en_el_hogar}}</div>
+            <div class="indentme">
+                <div>{{form.cuantos_cuartos_se_usan_para_dormir.label}}</div>
+                <div class="field-container">{{form.cuantos_cuartos_se_usan_para_dormir}}</div>
+            </div>
+        </li>
+        <li>
+            <div>{{form.habitantes.label}}</div>
+            <div class="field-container">{{form.habitantes}}</div>
+        </li>
+        <li>
+            <div>{{form.focos.label}}</div>
+            <div class="field-container">{{form.focos}}</div>
+        </li>
+        <li>
+            <div>{{form.con_quien_vive.label}}</div>
+            <div class="field-container">{{form.con_quien_vive}}</div>
+        </li>
+        <li>
+            <div>En su hora cuenta con:</div>
+            <table class="table table-hover tableblock">
+                <thead>
+                    <th>Aparatos y Servicios</th>
+                    <th>Si/No</th>
+                    <th>Cuantos</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{form.cuenta_con_automovil.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_automovil}}</td>
+                        <td class="field-count">{{form.cuantos_automovil}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.cuenta_con_televisor.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_televisor}}</td>
+                        <td class="field-count">{{form.cuantos_televisor}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.cuenta_con_celular.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_celular}}</td>
+                        <td class="field-count">{{form.cuantos_celular}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.cuenta_con_computadora.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_computadora}}</td>
+                        <td class="field-count">{{form.cuantos_computadora}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.cuenta_con_bano.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_bano}}</td>
+                        <td class="field-count">{{form.cuantos_bano}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{form.cuenta_con_servidumbre.label}}</td>
+                        <td class="field-boolean">{{form.cuenta_con_servidumbre}}</td>
+                        <td class="field-count">{{form.cuantos_servidumbre}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div>{{form.tarjeta_de_credito.label}}</div>
+            <div>{{form.tarjeta_de_credito}}</div>
+        </li>
+        <li>
+            <div>{{form.altura.label}}</div>
+            <div>{{form.altura}}</div>
+        </li>
+        <li>
+            <div>{{form.peso.label}}</div>
+            <div>{{form.peso}}</div>
+        </li>
+        <li>
+            <div>{{form.ejercicio_fisico.label}}</div>
+            <div>{{form.ejercicio_fisico}}</div>
+        </li>
+        <li>
+            <div>{{form.cigarrillo.label}}</div>
+            <div>{{form.cigarrillo}}</div>
+        </li>
+        <li>
+            <div>Preguntas referidas a sus padred</div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Pregunta</th><th>Padre</th><th>Madre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>¿Vive actualmente su... ?</td>
+                            <td>{{form.vive_con_padre}}</td>
+                            <td>{{form.vive_con_madre}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Qué edad tiene su... ?</td>
+                            <td>{{form.edad_padre}}</td>
+                            <td>{{form.edad_madre}}</td>
+                        </tr>
+                        <tr>
+                            <td>Su... ¿habla o hablaba algún dialecto o lengua indígena?</td>
+                            <td>{{form.padre_habla_dialecto_indigena}}</td>
+                            <td>{{form.madre_habla_dialecto_indigena}}</td>
+                        </tr>
+                        <tr>
+                            <td>Su... ¿habla o hablaba alguna lengua extranjera?</td>
+                            <td>{{form.padre_habla_lengua_extranjera}}</td>
+                            <td>{{form.madre_habla_lengua_extranjera}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Cuál fue el último nivel de educación que alcanzó su...?</td>
+                            <td>{{form.nivel_educacion_padre}}</td>
+                            <td>{{form.nivel_educacion_madre}}</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+        </li>
+
+    </ol>
+</div>
+
+<div class="row">
+    <span class="pull-right">
+        {% next_button %}
+    </span>
+</div>
+
+    <script>
+        $(document).ready(function(){
+
+            $("table.tableblock td.field-count input[type=number]").prop("readonly", true);
+            var $radios = $("table.tableblock td.field-boolean input[type=radio]")
+
+            for(var idx=0; idx < $radios.legth; idx++){
+                var elem = $radios[idx];
+                var $radio = $(elem);
+                var $input = $radio.parents("tr").find("td.field-count input[type=number]");
+                $input.prop(
+                    "readonly", $radio.prop("checked") && $radio.val() == "False");
+            }
+
+
+            $("table.tableblock td.field-boolean input[type=radio]").change(function(evt){
+                var $radio = $(evt.currentTarget);
+                var $input = $radio.parents("tr").find("td.field-count input[type=number]");
+                $input.prop("readonly", $radio.val() == "False");
+            });
+
+        });
+    </script>
+
+{% endblock %}

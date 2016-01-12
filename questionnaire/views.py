@@ -7,28 +7,37 @@ from .models import Constants
 
 def vars_for_all_templates(self):
 
-    return {'total_q': 1,
-            'total_rounds': Constants.num_rounds,
-            'round_number': self.subsession.round_number,
-            'role': self.player.role()}
+    return {}
 
 
 class Welcome(Page):
     pass
 
 
-class Question(Page):
+class Bloque1(Page):
 
     form_model = models.Player
     form_fields = [
-        "gender", "age", "ethnicity", "education_level", "marital_status",
-        "employment_status", "student_status", "enrolled_type", "auction_buy",
-        "auctions_experience"]
+        "satisfecho_con_la_vida",
+        "cuartos_en_el_hogar", "cuantos_cuartos_se_usan_para_dormir",
+        "habitantes",
+        "focos",
+        "con_quien_vive",
+        "cuenta_con_automovil", "cuantos_automovil",
+        "cuenta_con_televisor", "cuantos_televisor",
+        "cuenta_con_celular", "cuantos_celular",
+        "cuenta_con_computadora", "cuantos_computadora",
+        "cuenta_con_bano", "cuantos_bano",
+        "cuenta_con_servidumbre", "cuantos_servidumbre",
+        "tarjeta_de_credito",
+        "altura", "peso", "ejercicio_fisico", "cigarrillo",
+
+        "vive_con_padre", "vive_con_madre",
+        "edad_padre", "edad_madre",
+        "padre_habla_dialecto_indigena", "madre_habla_dialecto_indigena",
+        "padre_habla_lengua_extranjera", "madre_habla_lengua_extranjera",
+        "nivel_educacion_padre", "nivel_educacion_madre"
+    ]
 
 
-class Gamble(Page):
-    form_model = models.Player
-    form_fields = ["gamble"]
-
-
-page_sequence = [Welcome, Question, Gamble]
+page_sequence = [Welcome, Bloque1]
