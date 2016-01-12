@@ -32,9 +32,9 @@ class Constants:
     initial_payoff = c(100)
 
     result_time = 60
-    instructions_time = 10
-    section11_time = 3 * 60 # 3 minutes
-    section12_time = 3 * 60 # 3 minutes
+    instructions_time = 100000
+    section11_time = 3 * 60  - 20 # 3 minutes
+    section12_time = 3 * 60 - 20 # 3 minutes
 
 
 class Subsession(otree.models.BaseSubsession):
