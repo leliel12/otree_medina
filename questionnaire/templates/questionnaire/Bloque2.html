@@ -1,0 +1,287 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bloque 2
+{% endblock %}
+
+{% block content %}
+<div id="questionnaire" class="row">
+    <h4 class="text-center text-info">
+        Ahora se realizaran algunas preguntas referidas al tiempo cuando usted tenía 14 años. Es muy importante que
+        trate de recordar cómo vivía cuando usted tenía 14 años.
+    </h4>
+
+    <ol start="13">
+        <li>
+            <div>{{form.riqueza_hogar_14_anios.label}}</div>
+            <div class="field-container">{{form.riqueza_hogar_14_anios}}</div>
+        </li>
+        <li>
+            <div>Recuerde cuando usted tenía 14 años y conteste</div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th><th>Padre</th><th>Madre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Su... ¿tenía trabajo?</td>
+                            <td>{{form.padre_trabajaba_14_anios}}</td>
+                            <td>{{form.madre_trabajaba_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Cuál era la ocupación principal de su...?</td>
+                            <td>{{form.padre_ocupacion_14_anios}}</td>
+                            <td>{{form.madre_ocupacion_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>Por parte de este trabajo, su... ¿tenía prestaciones de servicios médicos?</td>
+                            <td>{{form.padre_trabajo_servicios_medicos_14_anios}}</td>
+                            <td>{{form.madre_trabajo_servicios_medicos_14_anios}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.con_quien_vivia_14_anios.label}}</div>
+            <div class="field-container">{{form.con_quien_vivia_14_anios}}</div>
+        </li>
+        <li>
+            <div>Recuerde cuando usted tenía 14 años y conteste. Si no vivía con padres, por favor conteste con respecto a tutores.</div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th><th>Padre</th><th>Madre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>¿Qué tan cerca emocionalmente estaba con su ... ?</td>
+                            <td>{{form.padre_emocionalmente_cerano_14_anios}}</td>
+                            <td>{{form.madre_emocionalmente_cerano_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Qué tanto su... entendía sus problemas y preocupaciones?</td>
+                            <td>{{form.padre_entendia_problemas_14_anios}}</td>
+                            <td>{{form.madre_entendia_problemas_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Qué tanto realizaba actividades escolares con su...?</td>
+                            <td>{{form.padre_actividades_escolares_14_anios}}</td>
+                            <td>{{form.madre_actividades_escolares_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Qué tanto realizaba actividades en su tiempo libre con su...?</td>
+                            <td>{{form.padre_actividades_tiempo_libre_14_anios}}</td>
+                            <td>{{form.madre_actividades_tiempo_libre_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>¿Qué tanto las reglas que le ponía su ... fueron claras y consistentes?</td>
+                            <td>{{form.padre_reglas_claras_14_anios}}</td>
+                            <td>{{form.madre_reglas_claras_14_anios}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.relacion_padres_14_anios.label}}</div>
+            <div class="field-container">{{form.relacion_padres_14_anios}}</div>
+        </li>
+        <li>
+            <div>¿Cómo era la situación en su familia cuando tenía 14 años? Si no vivía con padres, por favor conteste con respecto a tutores.</div>
+            <div>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <td>{{form.familia_frecuencia_insultos_14_anios.label}}</td>
+                            <td>{{form.familia_frecuencia_insultos_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.familia_frecuencia_cercania_14_anios.label}}</td>
+                            <td>{{form.familia_frecuencia_cercania_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.frequencia_miedos_14_anios.label}}</td>
+                            <td>{{form.frequencia_miedos_14_anios}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.madre_trabajo_por_ingreso_desde_que_nacio.label}}</div>
+            <div id="madre-trabajo" class="field-container">{{form.madre_trabajo_por_ingreso_desde_que_nacio}}</div>
+        </li>
+        <li>
+            <div>SI contesto que “Si” en la pregunta anterior, marque si su madre trabajó por más de un año en los siguientes periodos de su vida.</div>
+            <div>
+                <table class="table table-hover" id="madre-epoca-trabajo">
+                    <tbody>
+                        <tr>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_0_4_anios.label}}</td>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_0_4_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_5_9_anios.label}}</td>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_5_9_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_10_14_anios.label}}</td>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_10_14_anios}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_15_19_anios.label}}</td>
+                            <td>{{form.madre_trabajo_periodos_de_su_vida_15_19_anios}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.tiene_hermanos.label}}</div>
+            <div id="tiene_hermanos" class="field-container">{{form.tiene_hermanos}}</div>
+        </li>
+        <li>
+            <div>{{form.numero_de_hermano_que_es_usted.label}}</div>
+            <div id="numero_de_hermano_que_es_usted" class="field-container">{{form.numero_de_hermano_que_es_usted}}</div>
+        </li>
+        <li>
+            <div>Para cada pregunta piense por separado en hermanas y hermanos.</div>
+            <table class="table table-hover" id="tabla-hermanos">
+                <thead><th></th><th>Hermano(s)</th><th>Hermano(s)</th></thead>
+                <tbody>
+                    <tr>
+                        <td>Sin contarse usted, ¿cuántos(as) ... fueron o son, por favor cuéntelos(as) aunque hayan fallecido?</td>
+                        <td>{{form.hermanos_que_son}}</td>
+                        <td>{{form.hermanas_que_son}}</td>
+                    </tr>
+                    <tr>
+                        <td>¿Cuántos(as) de sus ... viven actualmente?</td>
+                        <td>{{form.hermanos_viven_con_usted_actualmente}}</td>
+                        <td>{{form.hermanas_viven_con_usted_actualmente}}</td>
+                    </tr>
+                    <tr>
+                        <td>¿Cuántos(as).... trabajan recibiendo pago actualmente?</td>
+                        <td>{{form.hermanos_trabajan_por_pago_actualmente}}</td>
+                        <td>{{form.hermanas_trabajan_por_pago_actualmente}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            <div>{{form.espera_trabajar_remonerado_mayor_parte_de_su_vida.label}}</div>
+            <div class="field-container">{{form.espera_trabajar_remonerado_mayor_parte_de_su_vida}}</div>
+        </li>
+        <li>
+            <div>{{form.de_que_manera_espera_trabajar.label}}</div>
+            <div class="field-container">{{form.de_que_manera_espera_trabajar}}</div>
+        </li>
+        <li>
+            <div>{{form.cuanto_cree_que_ganaria_en_30_anios.label}}</div>
+            <div class="field-container">{{form.cuanto_cree_que_ganaria_en_30_anios}}</div>
+        </li>
+        <li>
+            <div>{{form.cree_que_tendra_hijo.label}}</div>
+            <div class="field-container">{{form.cree_que_tendra_hijo}}</div>
+        </li>
+        <li>
+            <div>{{form.edad_de_primer_hijo.label}}</div>
+            <div class="field-container">{{form.edad_de_primer_hijo}}</div>
+        </li>
+        <li>
+            <div>{{form.edad_tuvo_primer_hijo.label}}</div>
+            <div class="field-container">{{form.edad_tuvo_primer_hijo}}</div>
+        </li>
+
+
+    </ol>
+</div>
+
+<div class="row">
+    <span class="pull-right">
+        {% next_button %}
+    </span>
+</div>
+
+    <script>
+        $(document).ready(function(){
+            // hijos
+            $("select#id_edad_de_primer_hijo").prop("disabled", true);
+            $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
+
+            $("select#id_cree_que_tendra_hijo").change(function(evt){
+                var $select = $(evt.currentTarget);
+                var val = $select.val();
+                if(val == "---" || val == "No"){
+                    $("select#id_edad_de_primer_hijo").prop("disabled", true);
+                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
+                    $("select#id_edad_de_primer_hijo").val(1);
+                    $("select#id_edad_tuvo_primer_hijo").val(1);
+                } else if(val == "Si") {
+                    $("select#id_edad_de_primer_hijo").prop("disabled", false);
+                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
+                    $("select#id_edad_tuvo_primer_hijo").val(1);
+                } else if(val == "Ya lo tuvo") {
+                    $("select#id_edad_de_primer_hijo").prop("disabled", true);
+                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", false);
+                    $("select#id_edad_de_primer_hijo").val(1);
+                }
+            });
+
+            // hermanos
+            $("div#numero_de_hermano_que_es_usted input[type=radio]").prop("disabled", true);
+            $("table#tabla-hermanos select").prop("disabled", true);
+
+            $("div#tiene_hermanos input[type=radio]").change(function(evt){
+                var $radio = $(evt.currentTarget);
+                var $numero_de_hermano_que_es_usted = $("div#numero_de_hermano_que_es_usted input[type=radio]");
+                var $tabla_hermanos = $("table#tabla-hermanos select");
+                var disable = ($radio.val() == "False");
+                if(disable){
+                    $tabla_hermanos.prop("disabled", true);
+                    $tabla_hermanos.val("---");
+
+                    $numero_de_hermano_que_es_usted.prop("disabled", true);
+                    $numero_de_hermano_que_es_usted.prop("checked", false);
+                    $numero_de_hermano_que_es_usted.filter("[value=1]").prop("checked", true);
+                } else {
+                    $numero_de_hermano_que_es_usted.prop("disabled", false);
+                    $tabla_hermanos.prop("disabled", false);
+                }
+            });
+
+
+            // MADRE
+
+            $("table#madre-epoca-trabajo input[type=radio]").prop("disabled", true);
+
+            $("div#madre-trabajo input[type=radio]").change(function(evt){
+                var $radio = $(evt.currentTarget);
+                var $epoca = $("table#madre-epoca-trabajo input[type=radio]")
+                var disable = ($radio.val() == "False");
+
+                if(disable){
+                    $epoca.prop("disabled", true);
+                    $epoca.prop("checked", false);
+                    $epoca.filter("[value=False]").prop("checked", true);
+                } else {
+                    $epoca.prop("disabled", false);
+                }
+            });
+
+            $("form#form").submit(function(evt){
+                $("form#form").hide("fast");
+                $("input").prop("disabled", false);
+                $("select").prop("disabled", false);
+            });
+
+        });
+    </script>
+
+{% endblock %}

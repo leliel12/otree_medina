@@ -74,7 +74,8 @@ class Player(otree.models.BasePlayer):
             "dígam, ¿Cuántos focos tiene en su vivienda?"), min=1, default=1)
 
     con_quien_vive = models.CharField(
-        verbose_name=("¿Con quién vive actualmente?"), max_length=255, default=False)
+        verbose_name=("¿Con quién vive actualmente?"), max_length=255, default="---",
+        choices=["---", "Solo", "Con una pareja", "Con amigos", "Con esposo(a)", "Con familia", "Otro"])
 
     cuenta_con_automovil = models.BooleanField(
         verbose_name=("Automóvil propio excluyendo taxis"),
@@ -202,7 +203,6 @@ class Player(otree.models.BasePlayer):
         max_length=20, default="---",
         choices=["---", "Excelente", "Buena", "Regular", "Mala", "Muy mala"])
 
-
     familia_frecuencia_insultos_14_anios = models.CharField(
         verbose_name=("¿Con qué frecuencia ocurrían INSULTOS, GRITOS o AMENAZAS en su familia?"),
         max_length=20, choices=["Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir"], default="Omitir")
@@ -253,6 +253,7 @@ class Player(otree.models.BasePlayer):
         choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
 
     espera_trabajar_remonerado_mayor_parte_de_su_vida = models.BooleanField(
+        widget=widgets.RadioSelectHorizontal(),
         verbose_name=("¿Espera usted trabajar de forma remunerada la mayor parte de su vida?"), default=False)
 
     de_que_manera_espera_trabajar = models.CharField(

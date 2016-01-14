@@ -26,8 +26,6 @@ class TimeOutMixin(object):
             if form.is_valid():
                 self.form = form
                 self.object = form.save()
-            elif self.PROCESS_FORM_ON_TIMEOUT:
-                self._set_auto_submit_values()
             else:
                 return self.form_invalid(form)
         else:

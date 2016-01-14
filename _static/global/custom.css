@@ -85,7 +85,8 @@ div#questionnaire div.field-container {
 }
 
 div#questionnaire div.field-container input[type="number"],
-div#questionnaire div.field-container input[type="text"] {
+div#questionnaire div.field-container input[type="text"],
+div#questionnaire div.field-container select {
     width: 250px;
 }
 

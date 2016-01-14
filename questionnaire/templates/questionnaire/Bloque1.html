@@ -139,16 +139,11 @@
     </ol>
 </div>
 
-<div class="row">
-    <span class="pull-right">
-        {% next_button %}
-    </span>
-</div>
 
     <script>
         $(document).ready(function(){
 
-            $("table.tableblock td.field-count input[type=number]").prop("readonly", true);
+            $("table.tableblock td.field-count input[type=number]").prop("disabled", true);
             var $radios = $("table.tableblock td.field-boolean input[type=radio]")
 
             for(var idx=0; idx < $radios.legth; idx++){
@@ -156,14 +151,20 @@
                 var $radio = $(elem);
                 var $input = $radio.parents("tr").find("td.field-count input[type=number]");
                 $input.prop(
-                    "readonly", $radio.prop("checked") && $radio.val() == "False");
+                    "disabled", $radio.prop("checked") && $radio.val() == "False");
             }
 
 
             $("table.tableblock td.field-boolean input[type=radio]").change(function(evt){
                 var $radio = $(evt.currentTarget);
                 var $input = $radio.parents("tr").find("td.field-count input[type=number]");
-                $input.prop("readonly", $radio.val() == "False");
+                $input.prop("disabled", $radio.val() == "False");
+            });
+
+            $("form#form").submit(function(evt){
+                $("form#form").hide("fast");
+                $("input").prop("disabled", false);
+                $("select").prop("disabled", false);
             });
 
         });

@@ -48,10 +48,11 @@ class Bloque1(TimeOutMixin, Page):
 class Bloque2(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60
+    #~ timeout_seconds = 3 * 60
 
+    form_model = models.Player
     form_fields = [
-        "riquese_hogar_14_anios",
+        "riqueza_hogar_14_anios",
 
         "padre_trabajaba_14_anios", "madre_trabajaba_14_anios",
         "padre_ocupacion_14_anios", "madre_ocupacion_14_anios",
