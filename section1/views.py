@@ -7,6 +7,8 @@ from ._builtin import Page, WaitPage
 from otree.common import Currency as c, currency_range
 from .models import Constants
 
+from utils import TimeOutMixin
+
 
 def vars_for_all_templates(self):
 
@@ -19,12 +21,14 @@ class Welcome(Page):
 
 class Instructions(Page):
 
-    timeout_seconds = Constants.instructions_time
+    timeout_seconds = 20
 
 
-class Section11(Page):
+class Section11(TimeOutMixin, Page):
 
-    timeout_seconds = Constants.section11_time
+    process_form_on_timeout = True
+
+    timeout_seconds = 3 * 60  - 20
 
     form_model = models.Player
     form_fields = ["dispuesto_a_apostar"]
@@ -35,12 +39,16 @@ class Section11(Page):
 
 class Section11Result(Page):
 
-    timeout_seconds = Constants.result_time
+    timeout_seconds = 60
+
+    def _set_auto_submit_values(self):
+        pass
 
 
-class Section12(Page):
+class Section12(TimeOutMixin, Page):
 
-    timeout_seconds = Constants.section12_time
+    process_form_on_timeout = True
+    timeout_seconds = 3 * 60  - 20
 
     form_model = models.Player
     form_fields = [
@@ -57,12 +65,14 @@ class Section12(Page):
         'bolsa_o_75_con_seguridad',
         'bolsa_o_80_con_seguridad']
 
+    def _set_auto_submit_values(self): pass
+
     def before_next_page(self):
         self.player.set_payoff_12()
 
 class Section12Result(Page):
 
-    timeout_seconds = Constants.result_time
+    timeout_seconds = 60
 
     def vars_for_template(self):
         parts = self.player.caso_seleccionado_para_12.split("_")

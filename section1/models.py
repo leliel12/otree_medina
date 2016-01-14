@@ -31,11 +31,6 @@ class Constants:
     num_rounds = 1
     initial_payoff = c(100)
 
-    result_time = 60
-    instructions_time = 20
-    section11_time = 3 * 60  - 20 # 3 minutes
-    section12_time = 3 * 60 - 20 # 3 minutes
-
 
 class Subsession(otree.models.BaseSubsession):
 
