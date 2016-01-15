@@ -110,3 +110,8 @@ div#questionnaire div.input-group.slider input {
     margin-top: 0px;
     margin-bottom: 0px;
 }
+
+div#questionnaire table.fiftyfifty tr td:first-child,
+div#questionnaire table.fiftyfifty tr td:nth-child(2) {
+    width: 50%;
+}

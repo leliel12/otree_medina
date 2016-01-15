@@ -203,85 +203,79 @@
     </ol>
 </div>
 
-<div class="row">
-    <span class="pull-right">
-        {% next_button %}
-    </span>
-</div>
+<script>
+$(document).ready(function(){
+    // hijos
+    $("select#id_edad_de_primer_hijo").prop("disabled", true);
+    $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
 
-    <script>
-        $(document).ready(function(){
-            // hijos
+    $("select#id_cree_que_tendra_hijo").change(function(evt){
+        var $select = $(evt.currentTarget);
+        var val = $select.val();
+        if(val == "---" || val == "No"){
             $("select#id_edad_de_primer_hijo").prop("disabled", true);
             $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
+            $("select#id_edad_de_primer_hijo").val(1);
+            $("select#id_edad_tuvo_primer_hijo").val(1);
+        } else if(val == "Si") {
+            $("select#id_edad_de_primer_hijo").prop("disabled", false);
+            $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
+            $("select#id_edad_tuvo_primer_hijo").val(1);
+        } else if(val == "Ya lo tuvo") {
+            $("select#id_edad_de_primer_hijo").prop("disabled", true);
+            $("select#id_edad_tuvo_primer_hijo").prop("disabled", false);
+            $("select#id_edad_de_primer_hijo").val(1);
+        }
+    });
 
-            $("select#id_cree_que_tendra_hijo").change(function(evt){
-                var $select = $(evt.currentTarget);
-                var val = $select.val();
-                if(val == "---" || val == "No"){
-                    $("select#id_edad_de_primer_hijo").prop("disabled", true);
-                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
-                    $("select#id_edad_de_primer_hijo").val(1);
-                    $("select#id_edad_tuvo_primer_hijo").val(1);
-                } else if(val == "Si") {
-                    $("select#id_edad_de_primer_hijo").prop("disabled", false);
-                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);
-                    $("select#id_edad_tuvo_primer_hijo").val(1);
-                } else if(val == "Ya lo tuvo") {
-                    $("select#id_edad_de_primer_hijo").prop("disabled", true);
-                    $("select#id_edad_tuvo_primer_hijo").prop("disabled", false);
-                    $("select#id_edad_de_primer_hijo").val(1);
-                }
-            });
+    // hermanos
+    $("div#numero_de_hermano_que_es_usted input[type=radio]").prop("disabled", true);
+    $("table#tabla-hermanos select").prop("disabled", true);
 
-            // hermanos
-            $("div#numero_de_hermano_que_es_usted input[type=radio]").prop("disabled", true);
-            $("table#tabla-hermanos select").prop("disabled", true);
+    $("div#tiene_hermanos input[type=radio]").change(function(evt){
+        var $radio = $(evt.currentTarget);
+        var $numero_de_hermano_que_es_usted = $("div#numero_de_hermano_que_es_usted input[type=radio]");
+        var $tabla_hermanos = $("table#tabla-hermanos select");
+        var disable = ($radio.val() == "False");
+        if(disable){
+            $tabla_hermanos.prop("disabled", true);
+            $tabla_hermanos.val("---");
 
-            $("div#tiene_hermanos input[type=radio]").change(function(evt){
-                var $radio = $(evt.currentTarget);
-                var $numero_de_hermano_que_es_usted = $("div#numero_de_hermano_que_es_usted input[type=radio]");
-                var $tabla_hermanos = $("table#tabla-hermanos select");
-                var disable = ($radio.val() == "False");
-                if(disable){
-                    $tabla_hermanos.prop("disabled", true);
-                    $tabla_hermanos.val("---");
-
-                    $numero_de_hermano_que_es_usted.prop("disabled", true);
-                    $numero_de_hermano_que_es_usted.prop("checked", false);
-                    $numero_de_hermano_que_es_usted.filter("[value=1]").prop("checked", true);
-                } else {
-                    $numero_de_hermano_que_es_usted.prop("disabled", false);
-                    $tabla_hermanos.prop("disabled", false);
-                }
-            });
+            $numero_de_hermano_que_es_usted.prop("disabled", true);
+            $numero_de_hermano_que_es_usted.prop("checked", false);
+            $numero_de_hermano_que_es_usted.filter("[value=1]").prop("checked", true);
+        } else {
+            $numero_de_hermano_que_es_usted.prop("disabled", false);
+            $tabla_hermanos.prop("disabled", false);
+        }
+    });
 
 
-            // MADRE
+    // MADRE
 
-            $("table#madre-epoca-trabajo input[type=radio]").prop("disabled", true);
+    $("table#madre-epoca-trabajo input[type=radio]").prop("disabled", true);
 
-            $("div#madre-trabajo input[type=radio]").change(function(evt){
-                var $radio = $(evt.currentTarget);
-                var $epoca = $("table#madre-epoca-trabajo input[type=radio]")
-                var disable = ($radio.val() == "False");
+    $("div#madre-trabajo input[type=radio]").change(function(evt){
+        var $radio = $(evt.currentTarget);
+        var $epoca = $("table#madre-epoca-trabajo input[type=radio]")
+        var disable = ($radio.val() == "False");
 
-                if(disable){
-                    $epoca.prop("disabled", true);
-                    $epoca.prop("checked", false);
-                    $epoca.filter("[value=False]").prop("checked", true);
-                } else {
-                    $epoca.prop("disabled", false);
-                }
-            });
+        if(disable){
+            $epoca.prop("disabled", true);
+            $epoca.prop("checked", false);
+            $epoca.filter("[value=False]").prop("checked", true);
+        } else {
+            $epoca.prop("disabled", false);
+        }
+    });
 
-            $("form#form").submit(function(evt){
-                $("form#form").hide("fast");
-                $("input").prop("disabled", false);
-                $("select").prop("disabled", false);
-            });
+    $("form#form").submit(function(evt){
+        $("form#form").hide("fast");
+        $("input").prop("disabled", false);
+        $("select").prop("disabled", false);
+    });
 
-        });
-    </script>
+});
+</script>
 
 {% endblock %}

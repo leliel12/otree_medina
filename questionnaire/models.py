@@ -287,121 +287,121 @@ class Player(otree.models.BasePlayer):
     RANGO_1_10 = range(1, 11)
 
     hogar_actual_vs_mexico = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Comparando su hogar actual con todos los hogares actuales de México y usando una escala de 1 a 10, en la que 1 son los hogares más pobres y 10 son los más ricos, ¿dónde pondría usted su hogar actual?"))
 
     cuanto_depende_de_usted_que_le_vaya_bien = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("En una escala del 1 al 10, donde 1 es “nada depende de usted” y 10 es “todo depende de usted”, ¿qué tanto depende de usted misma(o) que le vaya bien en este año y el próximo?"))
 
     gobierno_o_sociedad_pobreza = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Pobreza"))
     gobierno_o_sociedad_delincuencia = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Delincuencia"))
     gobierno_o_sociedad_narcotrafico = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Narcotráfico"))
     gobierno_o_sociedad_corrupcion = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Corrupción"))
     gobierno_o_sociedad_educacion = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Mala o Poca Educación"))
     gobierno_o_sociedad_discriminacion = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Discriminación"))
     gobierno_o_sociedad_adicciones_y_enfermedades = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        widget=widgets.RadioSelectHorizontal(), verbose_name=("Atención de adicciones y enfermedades"))
 
     dispuesto_a_tomar_riesgos = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("En una escala del 1 al 10, donde 1 es nada dispuesto y 10 totalmente dispuesto, ¿qué tan dispuesto está a tomar riesgos?"))
 
     describe_como_persona_abstengo_hacer_cosas_hoy = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Me abstengo de cosas hoy para poder tener más mañana"))
     describe_como_persona_retrazo_cosas = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Tiendo a retrasar cosas aun cuando sería mejor hacerlas de una vez"))
     describe_como_persona_asumo_gente_tiene_mejores_intenciones = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Mientras no esté convencido de lo contrario, siempre asumo que la gente tiene las mejores intenciones"))
     describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("No entiendo por qué alguna gente dedica su vida a pelear por una causa que no les beneficia directamente"))
     describe_como_persona_ayudo_al_que_me_ayudo = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Realizo un gran esfuerzo para ayudar a alguien que me ha ayudado antes"))
     describe_como_persona_me_vengo = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Si alguien me hace algo malo a propósito, trataré de regresárselo"))
 
     que_tan_impulsivo_se_considera = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("En una escala del 1 al 10, donde 1 es totalmente y 10 es nada, ¿qué tan impulsivo se considera?"))
 
     dispuesto_a_confiar = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Confiar en otras personas"))
     dispuesto_a_compartir = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Compartir algo con otras personas sin nada a cambio"))
     dispuesto_a_regresar_favor = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Regresar un favor a un extraño"))
     dispuesto_a_castigar = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Castigar a alguien debido a una conducta injusta aun cuando es costoso. Ej. Decirle a una persona que no tire basura en la calle aun cuando esa persona se puede enojar y decirle algo."))
 
     que_tan_paciente_se_considera = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("En una escala del 1 al 10, donde 1 es muy paciente y 10 es muy impaciente, ¿qué tan paciente o impaciente se considera? Usted puede escoger cualquier número entre 1 y 10."))
 
     acuerdo_con_educacion_genera_ingreso = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("El nivel educativo determina el nivel de ingreso de una persona"))
     acuerdo_con_hombres_mas_trabajo_que_mujeres = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Cuando no hay mucho trabajo, los hombres deberían de tener preferencia a un trabajo antes que las mujeres"))
     acuerdo_con_esposa_que_gana_mas_genera_dinero = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("La esposa que gana más dinero que el esposo genera problemas"))
     acuerdo_con_no_se_puede_confiar_en_nadie = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Hoy en día, no se puede confiar en nadie más"))
     acuerdo_con_camino_de_mi_vida = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("El camino de mi vida depende de mí"))
     acuerdo_con_he_logrado_lo_que_merezco = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("En comparación con otros, no he logrado lo que merezco"))
     acuerdo_con_logros_suerte = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Lo que se logra en la vida es principalmente una cuestión de destino o suerte"))
     acuerdo_con_otros_deciden_por_mi = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Frecuentemente tengo la sensación de que otros toman decisiones sobre mi vida"))
     acuerdo_con_puedo_influir_en_condicion_social = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Si uno es social o políticamente activo, se puede influir en las condiciones sociales"))
     acuerdo_con_trabajar_duro_exito = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Hay que trabajar duro para alcanzar el éxito"))
     acuerdo_con_dudo_de_mi_mismo = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Si enfrento dificultades en la vida, frecuentemente dudo de mí mismo"))
     acuerdo_con_oportunidades_dadas_por_condiciones_sociales = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Las oportunidades que tengo en la vida están determinadas por las condiciones sociales"))
     acuerdo_con_habilidades_mas_que_esfuerzo = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Las habilidades con las que nací son más importantes que todo el esfuerzo que yo pueda hacer"))
     acuerdo_con_poco_control_de_la_vida = models.PositiveIntegerField(
-        choices=RANGO_1_10, default=RANGO_1_10[0],
-        verbose_name=(""))
+        choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
+        verbose_name=("Tengo poco control sobre las cosas que suceden en mi vida"))
 
 
 
