@@ -103,7 +103,6 @@ div#questionnaire table input[type="text"] {
 div#questionnaire div.input-group.slider {
     margin-top: 5px;
     margin-bottom: 10px;
-    margin-left: 25%;
 }
 
 div#questionnaire div.input-group.slider input {
@@ -114,4 +113,8 @@ div#questionnaire div.input-group.slider input {
 div#questionnaire table.fiftyfifty tr td:first-child,
 div#questionnaire table.fiftyfifty tr td:nth-child(2) {
     width: 50%;
+}
+
+div#questionnaire table.imagetable td {
+    text-align: center;
 }

@@ -8,6 +8,8 @@ from otree.common import Currency as c, currency_range
 import random
 # </standard imports>
 
+from django.utils import timezone
+
 doc = """
 Foo
 """
@@ -496,6 +498,66 @@ class Player(otree.models.BasePlayer):
     que_tanto_lo_describe_1_anio = models.PositiveIntegerField(
         min=0, max=100000,  widget=widgets.SliderInput(),
         verbose_name=("Y ahora, ¿cuánto le tendrían que pagar dentro de un año para que pueda esperar ese tiempo?"), default=0)
+
+    # bloque 4
+    block_4_last_question_clicked = models.IntegerField(default=0, widget=widgets.HiddenInput())
+
+    # MUJERES
+    mestruando = models.BooleanField(
+        verbose_name="¿Se encuentra usted menstruando el día de hoy?", default=False, widget=widgets.RadioSelectHorizontal())
+
+    fecha_ultima_regla = models.DateField(
+        default=lambda: timezone.now().date(),
+        verbose_name="Fecha de comienzo de última regla (si no recuerda con precisión, favor de indicar la fecha más próxima).")
+    fecha_siguiente_regla = models.DateField(
+        default=lambda: timezone.now().date(),
+        verbose_name="Fecha esperada de comienzo de siguiente regla (si no puede calcular con precisión, favor de indicar la fecha más próxima independientemente de si usted es regular o irregular)")
+
+    anticonceptivos = models.BooleanField(
+        verbose_name="¿Utiliza pastillas anticonceptivas?", default=False, widget=widgets.RadioSelectHorizontal())
+
+    duracion_del_sangrado = models.PositiveIntegerField(
+        verbose_name=("¿Normalmente, cuántos días dura el sangrado?"),
+        widget=widgets.SliderInput(), default=5, min=1, max=10)
+
+    # Bloque 5
+    FIGURE_CHOICES_6 = ['---', '1', '2', '3', '4', '5', '6']
+
+    fig1 = models.CharField(
+        verbose_name="fig1.jpg",
+        max_length=10, choices=FIGURE_CHOICES_6, default=FIGURE_CHOICES_6[0])
+    fig2 = models.CharField(
+        verbose_name="fig2.jpg",
+        max_length=10, choices=FIGURE_CHOICES_6, default=FIGURE_CHOICES_6[0])
+    fig3 = models.CharField(
+        verbose_name="fig3.jpg",
+        max_length=10, choices=FIGURE_CHOICES_6, default=FIGURE_CHOICES_6[0])
+    fig4 = models.CharField(
+        verbose_name="fig4.jpg",
+        max_length=10, choices=FIGURE_CHOICES_6, default=FIGURE_CHOICES_6[0])
+
+    FIGURE_CHOICES_8 = ['---', '1', '2', '3', '4', '5', '6', '7', '8']
+    fig5 = models.CharField(
+        verbose_name="fig5.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+    fig6 = models.CharField(
+        verbose_name="fig6.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+    fig7 = models.CharField(
+        verbose_name="fig7.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+    fig8 = models.CharField(
+        verbose_name="fig8.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+    fig9 = models.CharField(
+        verbose_name="fig9.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+    fig10 = models.CharField(
+        verbose_name="fig10.jpg",
+        max_length=10, choices=FIGURE_CHOICES_8, default=FIGURE_CHOICES_8[0])
+
+
+
 
 
 

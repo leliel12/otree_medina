@@ -19,7 +19,7 @@ class Welcome(Page):
 class Bloque1(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 3 * 60
+    timeout_seconds = 3 * 60
 
     form_model = models.Player
     form_fields = [
@@ -176,4 +176,35 @@ class Bloque3(TimeOutMixin, Page):
         "que_tanto_lo_describe_1_anio"]
 
 
-page_sequence = [Welcome, Bloque1, Bloque2, Bloque3]
+class Bloque4Mujeres(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 3 * 60
+
+    form_model = models.Player
+    form_fields = [
+        "block_4_last_question_clicked",
+
+        "mestruando",
+        "fecha_ultima_regla",
+        "fecha_siguiente_regla",
+        "anticonceptivos",
+        "duracion_del_sangrado",
+    ]
+
+
+class Bloque5(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    #~ timeout_seconds = 3 * 60
+
+    form_model = models.Player
+    form_fields = [
+        "fig1", "fig2", "fig3", "fig4", "fig5",
+        "fig6", "fig7", "fig8", "fig9", "fig10"]
+
+
+page_sequence = [
+    #~ Welcome, Bloque1, Bloque2, Bloque3,
+    #~ Bloque4Mujeres,
+    Bloque5]

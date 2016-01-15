@@ -1,0 +1,79 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bloque 4
+{% endblock %}
+
+{% block content %}
+<div id="questionnaire" class="row">
+    <ol class="questions" start="49">
+        <li>
+            <div>A continuación encontrará 20 láminas, cada una de ellas contiene unos dibujos a los que les falta un pedazo. Usted debe señalar
+                 el pedazo que falta para completar correctamente el dibujo. Seleccione el patrón que mejor completa el dibujo.</div>
+            <div>
+                <table class="table imagetable fiftyfifty">
+                    <tr>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig1.label|lower}}"></div>
+                            <div class="field-container">{{form.fig1}}</div>
+                        </td>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig2.label|lower}}"></div>
+                            <div class="field-container">{{form.fig2}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig3.label|lower}}"></div>
+                            <div class="field-container">{{form.fig3}}</div>
+                        </td>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig4.label|lower}}"></div>
+                            <div class="field-container">{{form.fig4}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig5.label|lower}}"></div>
+                            <div class="field-container">{{form.fig5}}</div>
+                        </td>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig6.label|lower}}"></div>
+                            <div class="field-container">{{form.fig6}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig7.label|lower}}"></div>
+                            <div class="field-container">{{form.fig7}}</div>
+                        </td>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig8.label|lower}}"></div>
+                            <div class="field-container">{{form.fig8}}</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig9.label|lower}}"></div>
+                            <div class="field-container">{{form.fig9}}</div>
+                        </td>
+                        <td>
+                            <div><img src="{% static 'questionnaire' %}/{{form.fig10.label|lower}}"></div>
+                            <div class="field-container">{{form.fig10}}</div>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+        </li>
+    </ol>
+</div>
+
+<script>
+$(document).ready(function(){
+
+});
+</script>
+
+{% endblock %}
