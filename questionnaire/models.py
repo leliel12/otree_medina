@@ -113,7 +113,7 @@ class Player(otree.models.BasePlayer):
 
     altura = models.FloatField(
         verbose_name=("Aproximadamente, ¿qué estatura tiene usted?"),
-        min=0, max=2.5, widget=widgets.SliderInput(attrs={'step': '0.1'}), default=0)
+        min=0, max=2.5, widget=widgets.SliderInput(attrs={'step': '0.01'}), default=0)
 
     peso = models.PositiveIntegerField(
         verbose_name=("Aproximadamente, ¿qué peso tiene usted? (en kilogramos)"),
@@ -160,58 +160,68 @@ class Player(otree.models.BasePlayer):
         widget=widgets.RadioSelectHorizontal(),
         verbose_name=(
             "Comparando el hogar donde vivía a los 14 años con todos los "
-            "hogares actuales de México y usando una escala de 1 a 10, en la"
+            "hogares actuales de México y usando una escala de 1 a 10, en la "
             "que 1 son los hogares más pobres y 10 son los más ricos, ¿dónde "
             "pondría usted su hogar de ese entonces?"),
         choices=range(1, 11), default=1)
 
+    TRABAJOS = ("---", "Patrón o empleador ", "Trabajador por cuenta propia ",
+            "Empleado u obrero del sector público",
+            "Empleado u obrero del sector privado", "Servicio Doméstico (por pago)",
+            "Quehaceres del hogar (sin pago) ", "Trabajador sin pago ",
+            "Fuerzas armadas y del orden")
 
     padre_trabajaba_14_anios = models.BooleanField(widget=widgets.RadioSelectHorizontal(), default=False)
     madre_trabajaba_14_anios = models.BooleanField(widget=widgets.RadioSelectHorizontal(), default=False)
-    padre_ocupacion_14_anios = models.CharField(max_length=255, default=" ")
-    madre_ocupacion_14_anios = models.CharField(max_length=255, default=" ")
+    padre_ocupacion_14_anios = models.CharField(max_length=255, choices=TRABAJOS, default=TRABAJOS[0])
+    madre_ocupacion_14_anios = models.CharField(max_length=255, choices=TRABAJOS, default=TRABAJOS[0])
     padre_trabajo_servicios_medicos_14_anios = models.BooleanField(widget=widgets.RadioSelectHorizontal(), default=False)
     madre_trabajo_servicios_medicos_14_anios = models.BooleanField(widget=widgets.RadioSelectHorizontal(), default=False)
 
+    CON_QUIEN_VIVIA = (
+        "---", "Solo con el padre", "Solo con la madre",
+        "Con ambos, padre y madre", "Con otra familia", "Otra persona")
     con_quien_vivia_14_anios = models.CharField(
         verbose_name=("Cuando usted tenía alrededor de 14 años ¿con quién vivía?"),
-        max_length=255, default=" ")
+        choices=CON_QUIEN_VIVIA, default=CON_QUIEN_VIVIA[0], max_length=255)
 
+    MUCHO_REGULAR_POCO_NADA = ["---", "Mucho", "Regular", "Poco", "Nada"]
     padre_emocionalmente_cerano_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     madre_emocionalmente_cerano_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     padre_entendia_problemas_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     madre_entendia_problemas_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     padre_actividades_escolares_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     madre_actividades_escolares_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     padre_actividades_tiempo_libre_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     madre_actividades_tiempo_libre_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     padre_reglas_claras_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
     madre_reglas_claras_14_anios = models.CharField(
-        max_length=20, choices=["---", "Mucho", "Regular", "Poco", "Nada"], default="---")
+        max_length=20, choices=MUCHO_REGULAR_POCO_NADA, default=MUCHO_REGULAR_POCO_NADA[0])
 
     relacion_padres_14_anios = models.CharField(
         verbose_name=("¿La relación entre sus padres generalmente era: excelente, buena, regular, mala o muy mala?"),
         max_length=20, default="---",
         choices=["---", "Excelente", "Buena", "Regular", "Mala", "Muy mala"])
 
+    FAMILIA_FRECUENCIA = ("Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir")
     familia_frecuencia_insultos_14_anios = models.CharField(
         verbose_name=("¿Con qué frecuencia ocurrían INSULTOS, GRITOS o AMENAZAS en su familia?"),
-        max_length=20, choices=["Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir"], default="Omitir")
+        max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
     familia_frecuencia_cercania_14_anios = models.CharField(
         verbose_name=("¿Con qué frecuencia los miembros de su familia se sentían muy cercanos los unos de los otros?"),
-        max_length=20, choices=["Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir"], default="Omitir")
+        max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
     frequencia_miedos_14_anios = models.CharField(
         verbose_name=("¿Con qué frecuencia lo molestaban miedos o preocupaciones?"),
-        max_length=20, choices=["Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir"], default="Omitir")
+        max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
 
     madre_trabajo_por_ingreso_desde_que_nacio = models.BooleanField(
         verbose_name=("¿Su madre trabajo por un ingreso en algún momento desde que usted nació hasta el día de hoy?"),
@@ -239,26 +249,24 @@ class Player(otree.models.BasePlayer):
             "aunque hayan fallecido y dígame qué número de hermano es usted."),
         choices=range(1, 11), default=1, widget=widgets.RadioSelectHorizontal())
 
-    hermanos_que_son = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
-    hermanas_que_son = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
-    hermanos_viven_con_usted_actualmente = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
-    hermanas_viven_con_usted_actualmente = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
-    hermanos_trabajan_por_pago_actualmente = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
-    hermanas_trabajan_por_pago_actualmente = models.CharField(
-        choices=["---"] + [str(i) for i in range(1, 11)], max_length=10, default="---")
+    HERMANOS_1_10 = ["---"] + [str(i) for i in range(1, 11)]
+    hermanos_que_son = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
+    hermanas_que_son = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
+    hermanos_viven_con_usted_actualmente = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
+    hermanas_viven_con_usted_actualmente = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
+    hermanos_trabajan_por_pago_actualmente = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
+    hermanas_trabajan_por_pago_actualmente = models.CharField(choices=HERMANOS_1_10, max_length=10, default=HERMANOS_1_10[0])
 
     espera_trabajar_remonerado_mayor_parte_de_su_vida = models.BooleanField(
         widget=widgets.RadioSelectHorizontal(),
         verbose_name=("¿Espera usted trabajar de forma remunerada la mayor parte de su vida?"), default=False)
 
+    TRABAJO_FUTURO = [
+        "---", "Asalariado", "Auto-empleado", "Dueño de negocio",
+        "Dueño de empresa", "Ninguna de las anteriores"]
     de_que_manera_espera_trabajar = models.CharField(
         verbose_name="¿De qué manera espera trabajar?",
-        choices=["---", "Cuentapropista", "En relacion de dependencia"], max_length=100, default="---")
+        choices=TRABAJO_FUTURO, max_length=100, default=TRABAJO_FUTURO[0])
 
     cuanto_cree_que_ganaria_en_30_anios = models.PositiveIntegerField(
         verbose_name=(
