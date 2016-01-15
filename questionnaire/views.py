@@ -126,7 +126,7 @@ class Bloque3(TimeOutMixin, Page):
         "describe_como_persona_abstengo_hacer_cosas_hoy",
         "describe_como_persona_retrazo_cosas",
         "describe_como_persona_asumo_gente_tiene_mejores_intenciones",
-        "describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia",
+        "describe_como_persona_no_entiendo_pelea_no_le_beneficia",
         "describe_como_persona_ayudo_al_que_me_ayudo",
         "describe_como_persona_me_vengo",
 

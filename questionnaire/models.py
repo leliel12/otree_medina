@@ -341,7 +341,7 @@ class Player(otree.models.BasePlayer):
     describe_como_persona_asumo_gente_tiene_mejores_intenciones = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
         verbose_name=("Mientras no esté convencido de lo contrario, siempre asumo que la gente tiene las mejores intenciones"))
-    describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia = models.PositiveIntegerField(
+    describe_como_persona_no_entiendo_pelea_no_le_beneficia = models.PositiveIntegerField(
         choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
         verbose_name=("No entiendo por qué alguna gente dedica su vida a pelear por una causa que no les beneficia directamente"))
     describe_como_persona_ayudo_al_que_me_ayudo = models.PositiveIntegerField(
