@@ -48,7 +48,7 @@ class Bloque1(TimeOutMixin, Page):
 class Bloque2(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 3 * 60
+    timeout_seconds = 3 * 60
 
     form_model = models.Player
     form_fields = [
@@ -99,4 +99,49 @@ class Bloque2(TimeOutMixin, Page):
     ]
 
 
-page_sequence = [Welcome, Bloque1, Bloque2]
+class Bloque3(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 3 * 60
+
+    form_model = models.Player
+    form_fields = [
+        "hogar_actual_vs_mexico",
+
+        "cuanto_depende_de_usted_que_le_vaya_bien",
+
+        "gobierno_o_sociedad_pobreza", "gobierno_o_sociedad_delincuencia",
+        "gobierno_o_sociedad_narcotrafico", "gobierno_o_sociedad_corrupcion",
+        "gobierno_o_sociedad_educacion", "gobierno_o_sociedad_discriminacion",
+        "gobierno_o_sociedad_adicciones_y_enfermedades",
+
+        "dispuesto_a_tomar_riesgos",
+
+        "describe_como_persona_abstengo_hacer_cosas_hoy",
+        "describe_como_persona_retrazo_cosas",
+        "describe_como_persona_asumo_gente_tiene_mejores_intenciones",
+        "describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia",
+        "describe_como_persona_ayudo_al_que_me_ayudo",
+        "describe_como_persona_me_vengo",
+
+        "que_tan_impulsivo_se_considera",
+
+        "dispuesto_a_confiar", "dispuesto_a_compartir",
+        "dispuesto_a_regresar_favor", "dispuesto_a_castigar",
+
+        "que_tan_paciente_se_considera",
+
+        "acuerdo_con_educacion_genera_ingreso",
+        "acuerdo_con_hombres_mas_trabajo_que_mujeres",
+        "acuerdo_con_esposa_que_gana_mas_genera_dinero",
+        "acuerdo_con_no_se_puede_confiar_en_nadie",
+        "acuerdo_con_camino_de_mi_vida",
+        "acuerdo_con_he_logrado_lo_que_merezco",
+        "acuerdo_con_logros_suerte", "acuerdo_con_otros_deciden_por_mi",
+        "acuerdo_con_puedo_influir_en_condicion_social",
+        "acuerdo_con_trabajar_duro_exito", "acuerdo_con_dudo_de_mi_mismo",
+        "acuerdo_con_oportunidades_dadas_por_condiciones_sociales",
+        "acuerdo_con_habilidades_mas_que_esfuerzo", "acuerdo_con_poco_control_de_la_vida"]
+
+
+page_sequence = [Welcome, Bloque1, Bloque2, Bloque3]

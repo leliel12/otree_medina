@@ -282,3 +282,127 @@ class Player(otree.models.BasePlayer):
 
     edad_tuvo_primer_hijo = models.PositiveIntegerField(
         verbose_name=("¿A qué edad tuvo a su primer hijo?"), choices=range(1, 100), default=0)
+
+    # BLOQUE 3
+    RANGO_1_10 = range(1, 11)
+
+    hogar_actual_vs_mexico = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    cuanto_depende_de_usted_que_le_vaya_bien = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    gobierno_o_sociedad_pobreza = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_delincuencia = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_narcotrafico = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_corrupcion = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_educacion = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_discriminacion = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    gobierno_o_sociedad_adicciones_y_enfermedades = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    dispuesto_a_tomar_riesgos = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    describe_como_persona_abstengo_hacer_cosas_hoy = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    describe_como_persona_retrazo_cosas = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    describe_como_persona_asumo_gente_tiene_mejores_intenciones = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    describe_como_persona_ayudo_al_que_me_ayudo = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    describe_como_persona_me_vengo = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    que_tan_impulsivo_se_considera = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    dispuesto_a_confiar = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    dispuesto_a_compartir = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    dispuesto_a_regresar_favor = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    dispuesto_a_castigar = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    que_tan_paciente_se_considera = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+    acuerdo_con_educacion_genera_ingreso = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_hombres_mas_trabajo_que_mujeres = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_esposa_que_gana_mas_genera_dinero = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_no_se_puede_confiar_en_nadie = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_camino_de_mi_vida = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_he_logrado_lo_que_merezco = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_logros_suerte = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_otros_deciden_por_mi = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_puedo_influir_en_condicion_social = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_trabajar_duro_exito = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_dudo_de_mi_mismo = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_oportunidades_dadas_por_condiciones_sociales = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_habilidades_mas_que_esfuerzo = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+    acuerdo_con_poco_control_de_la_vida = models.PositiveIntegerField(
+        choices=RANGO_1_10, default=RANGO_1_10[0],
+        verbose_name=(""))
+
+
+
+
