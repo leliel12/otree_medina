@@ -19,7 +19,7 @@ class Welcome(Page):
 class Bloque1(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60
+    #~ timeout_seconds = 3 * 60
 
     form_model = models.Player
     form_fields = [
@@ -106,7 +106,7 @@ class Bloque2(TimeOutMixin, Page):
 class Bloque3(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 3 * 60
+    timeout_seconds = 3 * 60
 
     form_model = models.Player
     form_fields = [
@@ -147,7 +147,7 @@ class Bloque3(TimeOutMixin, Page):
         "acuerdo_con_puedo_influir_en_condicion_social",
         "acuerdo_con_trabajar_duro_exito", "acuerdo_con_dudo_de_mi_mismo",
         "acuerdo_con_oportunidades_dadas_por_condiciones_sociales",
-        "acuerdo_con_habilidades_mas_que_esfuerzo", "acuerdo_con_poco_control_de_la_vida"
+        "acuerdo_con_habilidades_mas_que_esfuerzo", "acuerdo_con_poco_control_de_la_vida",
 
         "que_tanto_es_es_reservado", "que_tanto_es_confiable", "que_tanto_es_flojo",
         "que_tanto_es_relajado", "que_tanto_es_artista", "que_tanto_es_sociable",

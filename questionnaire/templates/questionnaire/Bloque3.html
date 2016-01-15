@@ -16,7 +16,7 @@
         trate de recordar cómo vivía cuando usted tenía 14 años.
     </h4>
 
-    <ol id="questions" start="30">
+    <ol class="questions" start="30">
         <li>
             <div>{{form.hogar_actual_vs_mexico.label}}</div>
             <div class="field-container">{{form.hogar_actual_vs_mexico}}</div>
@@ -110,12 +110,80 @@
                 </table>
             </div>
         </li>
+        <li>
+            <div>De acuerdo con esta tarjeta, dígame ¿qué tanto ...?</div>
+            <div>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr><td>{{form.que_tanto_es_es_reservado.label}}</td><td>{{form.que_tanto_es_es_reservado}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_confiable.label}}</td><td>{{form.que_tanto_es_confiable}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_flojo.label}}</td><td>{{form.que_tanto_es_flojo}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_relajado.label}}</td><td>{{form.que_tanto_es_relajado}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_artista.label}}</td><td>{{form.que_tanto_es_artista}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_sociable.label}}</td><td>{{form.que_tanto_es_sociable}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_falla_en_los_demas.label}}</td><td>{{form.que_tanto_es_falla_en_los_demas}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_nervioso.label}}</td><td>{{form.que_tanto_es_nervioso}}</td></tr>
+                        <tr><td>{{form.que_tanto_es_imaginador.label}}</td><td>{{form.que_tanto_es_imaginador}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>De acuerdo con esta tarjeta, dígame para cada situación que le voy a mencionar ¿qué tanto lo describe?</div>
+            <div>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr><td>{{form.que_tanto_lo_describe_ideas_me_distraen.label}}</td><td>{{form.que_tanto_lo_describe_ideas_me_distraen}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_contratiempos_desanima.label}}</td><td>{{form.que_tanto_lo_describe_contratiempos_desanima}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_persona_trabajadora.label}}</td><td>{{form.que_tanto_lo_describe_persona_trabajadora}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_pierdo_interes.label}}</td><td>{{form.que_tanto_lo_describe_pierdo_interes}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_persigo_diferentes_metas.label}}</td><td>{{form.que_tanto_lo_describe_persigo_diferentes_metas}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_dificultades_para_concentracion.label}}</td><td>{{form.que_tanto_lo_describe_dificultades_para_concentracion}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_termino_lo_que_comienzo.label}}</td><td>{{form.que_tanto_lo_describe_termino_lo_que_comienzo}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_efuerzo_en_mi_trabajo.label}}</td><td>{{form.que_tanto_lo_describe_efuerzo_en_mi_trabajo}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_malos_habitos.label}}</td><td>{{form.que_tanto_lo_describe_malos_habitos}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_cosas_inapropiadas.label}}</td><td>{{form.que_tanto_lo_describe_cosas_inapropiadas}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_resisto_tentaciones.label}}</td><td>{{form.que_tanto_lo_describe_resisto_tentaciones}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_me_arrepiento.label}}</td><td>{{form.que_tanto_lo_describe_me_arrepiento}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_hago_cosas_sin_pensar.label}}</td><td>{{form.que_tanto_lo_describe_hago_cosas_sin_pensar}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
     </ol>
+
+    <h4 class="text-center text-info">
+        Preguntas con dinero hipotético. Por favor imagine que tiene una cierta cantidad de dinero y las decisiones que
+        tomaría con ese dinero.
+    </h4>
+    <ol class="questions" start="41">
+        <li>
+            <div>{{form.apuesta_loteria_1000.label}}</div>
+            <div class="field-container">{{form.apuesta_loteria_1000}}</div>
+        </li>
+        <li>
+            <div>{{form.donar_1000.label}}</div>
+            <div class="field-container">{{form.donar_1000}}</div>
+        </li>
+        <li>
+            <div>Imagine que debe recibir un pago de $1,000 el día de hoy.</div>
+            <div>
+                <table class="table table-hover">
+                    <tbody>
+                        <tr><td>{{form.pagan_100_esperar_3_meses.label}}</td><td>{{form.pagan_100_esperar_3_meses}}</td></tr>
+                        <tr><td>{{form.que_tanto_lo_describe_1_anio.label}}</td><td>{{form.que_tanto_lo_describe_1_anio}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+
+    </ol>
+
 </div>
 
 <script>
 $(document).ready(function(){
-    $("form#form ol#questions li").click(function(evt){
+    $("form#form ol.questions li").click(function(evt){
         var $li = $(evt.currentTarget);
         var index = $li.index();
         var offset = $li.parent("ol").attr("start");
@@ -123,7 +191,6 @@ $(document).ready(function(){
             index = index + parseInt(offset);
         else
             index = index + 1;
-        console.log(index);
         $("#cuestion_clicked input").val(index);
     });
 });

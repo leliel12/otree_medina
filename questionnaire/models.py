@@ -61,15 +61,19 @@ class Player(otree.models.BasePlayer):
             widget=widgets.RadioSelectHorizontal(), default=1)
 
     cuartos_en_el_hogar = models.PositiveIntegerField(
+        widget=widgets.SliderInput(), max=20,
         verbose_name=("¿Cuántos cuartos hay en su hogar sin contar pasillos, ni baños?"), min=1, default=1)
 
     cuantos_cuartos_se_usan_para_dormir = models.PositiveIntegerField(
+        widget=widgets.SliderInput(), max=20,
         verbose_name=("Y de esos cuartos, ¿cuántos usan para dormir?"), min=1, default=1)
 
     habitantes = models.PositiveIntegerField(
+        widget=widgets.SliderInput(), max=50,
         verbose_name=("¿Cuántas personas viven en su hogar contando ancianos y niños?"), min=1, default=1)
 
     focos = models.PositiveIntegerField(
+        widget=widgets.SliderInput(), max=100,
         verbose_name=(
             "Contando todos los focos que utiliza para iluminar su hogar, "
             "incluyendo los de techos, paredes y lámparas de buró o piso, "
@@ -272,6 +276,7 @@ class Player(otree.models.BasePlayer):
         choices=TRABAJO_FUTURO, max_length=100, default=TRABAJO_FUTURO[0])
 
     cuanto_cree_que_ganaria_en_30_anios = models.PositiveIntegerField(
+        widget=widgets.SliderInput(), max=100000,
         verbose_name=(
             "Imagine que usted tiene 30 años el día de hoy y está trabajando "
             "de forma remunerada. ¿Cuánto cree que ganaría al mes por su trabajo?"), default=0)
@@ -486,8 +491,10 @@ class Player(otree.models.BasePlayer):
         min=0, max=1000, widget=widgets.SliderInput(), default=0)
 
     pagan_100_esperar_3_meses = models.PositiveIntegerField(
+        min=0, max=100000,  widget=widgets.SliderInput(),
         verbose_name=("¿Cuánto le tendrían que pagar dentro de tres meses para que pueda esperar este tiempo?"), default=0)
     que_tanto_lo_describe_1_anio = models.PositiveIntegerField(
+        min=0, max=100000,  widget=widgets.SliderInput(),
         verbose_name=("Y ahora, ¿cuánto le tendrían que pagar dentro de un año para que pueda esperar ese tiempo?"), default=0)
 
 
