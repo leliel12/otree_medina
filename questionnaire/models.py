@@ -50,6 +50,8 @@ class Player(otree.models.BasePlayer):
     # </built-in>
 
     # bloque 1
+    block_1_last_question_clicked = models.IntegerField(default=0, widget=widgets.HiddenInput())
+
     satisfecho_con_la_vida = models.PositiveIntegerField(
         verbose_name=(
             "En una escala del 1 al 10, donde 1 es nada satisfecho y 10 "
@@ -154,8 +156,9 @@ class Player(otree.models.BasePlayer):
         choices=["---", "Primaria", "Secundaria", "Preparatoria", "Universitario"],
         max_length=50, default="---")
 
-
     # bloque 2
+    block_2_last_question_clicked = models.IntegerField(default=0, widget=widgets.HiddenInput())
+
     riqueza_hogar_14_anios = models.PositiveIntegerField(
         widget=widgets.RadioSelectHorizontal(),
         verbose_name=(
@@ -284,6 +287,8 @@ class Player(otree.models.BasePlayer):
         verbose_name=("¿A qué edad tuvo a su primer hijo?"), choices=range(1, 100), default=0)
 
     # BLOQUE 3
+    block_3_last_question_clicked = models.IntegerField(default=0, widget=widgets.HiddenInput())
+
     RANGO_1_10 = range(1, 11)
 
     hogar_actual_vs_mexico = models.PositiveIntegerField(

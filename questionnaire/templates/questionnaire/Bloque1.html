@@ -7,7 +7,12 @@
 
 {% block content %}
 <div id="questionnaire" class="row">
-    <ol>
+
+    <span id="cuestion_clicked">
+        {{form.block_1_last_question_clicked}}
+    </span>
+
+    <ol id="questions">
         <li>
             <div>{{form.satisfecho_con_la_vida.label}}</div>
             <div class="">{{form.satisfecho_con_la_vida}}</div>
@@ -140,34 +145,44 @@
 </div>
 
 
-    <script>
-        $(document).ready(function(){
+<script>
+$(document).ready(function(){
 
-            $("table.tableblock td.field-count input[type=number]").prop("disabled", true);
-            var $radios = $("table.tableblock td.field-boolean input[type=radio]")
+    $("form#form ol#questions li").click(function(evt){
+        var $li = $(evt.currentTarget);
+        var index = $li.index();
+        var offset = $li.parent("ol").attr("start");
+        if(!!offset)
+            index = index + parseInt(offset);
+        else
+            index = index + 1;
+        $("#cuestion_clicked input").val(index);
+    });
 
-            for(var idx=0; idx < $radios.legth; idx++){
-                var elem = $radios[idx];
-                var $radio = $(elem);
-                var $input = $radio.parents("tr").find("td.field-count input[type=number]");
-                $input.prop(
-                    "disabled", $radio.prop("checked") && $radio.val() == "False");
-            }
+    $("table.tableblock td.field-count input[type=number]").prop("disabled", true);
+    var $radios = $("table.tableblock td.field-boolean input[type=radio]")
 
+    for(var idx=0; idx < $radios.legth; idx++){
+        var elem = $radios[idx];
+        var $radio = $(elem);
+        var $input = $radio.parents("tr").find("td.field-count input[type=number]");
+        $input.prop(
+            "disabled", $radio.prop("checked") && $radio.val() == "False");
+    }
 
-            $("table.tableblock td.field-boolean input[type=radio]").change(function(evt){
-                var $radio = $(evt.currentTarget);
-                var $input = $radio.parents("tr").find("td.field-count input[type=number]");
-                $input.prop("disabled", $radio.val() == "False");
-            });
+    $("table.tableblock td.field-boolean input[type=radio]").change(function(evt){
+        var $radio = $(evt.currentTarget);
+        var $input = $radio.parents("tr").find("td.field-count input[type=number]");
+        $input.prop("disabled", $radio.val() == "False");
+    });
 
-            $("form#form").submit(function(evt){
-                $("form#form").hide("fast");
-                $("input").prop("disabled", false);
-                $("select").prop("disabled", false);
-            });
+    $("form#form").submit(function(evt){
+        $("form#form").hide("fast");
+        $("input").prop("disabled", false);
+        $("select").prop("disabled", false);
+    });
 
-        });
-    </script>
+});
+</script>
 
 {% endblock %}

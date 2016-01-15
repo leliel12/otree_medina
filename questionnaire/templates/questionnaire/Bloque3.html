@@ -1,0 +1,132 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bloque 3
+{% endblock %}
+
+{% block content %}
+<div id="questionnaire" class="row">
+    <span id="cuestion_clicked">
+        {{form.block_3_last_question_clicked}}
+    </span>
+
+    <h4 class="text-center text-info">
+        Ahora se realizaran algunas preguntas referidas al tiempo cuando usted tenía 14 años. Es muy importante que
+        trate de recordar cómo vivía cuando usted tenía 14 años.
+    </h4>
+
+    <ol id="questions" start="30">
+        <li>
+            <div>{{form.hogar_actual_vs_mexico.label}}</div>
+            <div class="field-container">{{form.hogar_actual_vs_mexico}}</div>
+        </li>
+        <li>
+            <div>{{form.cuanto_depende_de_usted_que_le_vaya_bien.label}}</div>
+            <div class="field-container">{{form.cuanto_depende_de_usted_que_le_vaya_bien}}</div>
+        </li>
+        <li>
+            <div>Algunas personas piensan que ciertos problemas deben ser resueltos por el Gobierno, mientras otras piensan que esos problemas
+            deben ser resueltos completamente por la sociedad. En una escala del 1 al 10, donde 1 es “totalmente por la sociedad o la propia
+            persona” y 10 es “totalmente por el Gobierno”, ¿en dónde se ubica usted en su creencia de quién debe resolver estos problemas?
+            Usted puede escoger cualquier número entre 1 y 10.</div>
+            <div>
+                <table class="table table-hover fiftyfifty">
+                    <tbody>
+                        <tr><td>{{form.gobierno_o_sociedad_pobreza.label}}</td><td>{{form.gobierno_o_sociedad_pobreza}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_delincuencia.label}}</td><td>{{form.gobierno_o_sociedad_delincuencia}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_narcotrafico.label}}</td><td>{{form.gobierno_o_sociedad_narcotrafico}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_corrupcion.label}}</td><td>{{form.gobierno_o_sociedad_corrupcion}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_educacion.label}}</td><td>{{form.gobierno_o_sociedad_educacion}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_discriminacion.label}}</td><td>{{form.gobierno_o_sociedad_discriminacion}}</td></tr>
+                        <tr><td>{{form.gobierno_o_sociedad_adicciones_y_enfermedades.label}}</td><td>{{form.gobierno_o_sociedad_adicciones_y_enfermedades}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.dispuesto_a_tomar_riesgos.label}}</div>
+            <div class="field-container">{{form.dispuesto_a_tomar_riesgos}}</div>
+        </li>
+        <li>
+            <div>En una escala del 1 al 10, donde 1 es no me describe para nada y 10 me describe perfectamente, ¿qué tan bien le describe como
+                 persona cada una de las siguientes frases? Usted puede escoger cualquier número entre 1 y 10</div>
+            <div>
+                <table class="table table-hover fiftyfifty">
+                    <tbody>
+                        <tr><td>{{form.describe_como_persona_abstengo_hacer_cosas_hoy.label}}</td><td>{{form.describe_como_persona_abstengo_hacer_cosas_hoy}}</td></tr>
+                        <tr><td>{{form.describe_como_persona_retrazo_cosas.label}}</td><td>{{form.describe_como_persona_retrazo_cosas}}</td></tr>
+                        <tr><td>{{form.describe_como_persona_asumo_gente_tiene_mejores_intenciones.label}}</td><td>{{form.describe_como_persona_asumo_gente_tiene_mejores_intenciones}}</td></tr>
+                        <tr><td>{{form.describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia.label}}</td><td>{{form.describe_como_persona_no_entiendo_gente_pelea_causa_que_no_le_beneficia}}</td></tr>
+                        <tr><td>{{form.describe_como_persona_ayudo_al_que_me_ayudo.label}}</td><td>{{form.describe_como_persona_ayudo_al_que_me_ayudo}}</td></tr>
+                        <tr><td>{{form.describe_como_persona_me_vengo.label}}</td><td>{{form.describe_como_persona_me_vengo}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.que_tan_impulsivo_se_considera.label}}</div>
+            <div class="field-container">{{form.que_tan_impulsivo_se_considera}}</div>
+        </li>
+        <li>
+            <div>En una escala del 1 al 10, donde 1 es nada dispuesto y 10 totalmente dispuesto, usted puede escoger cualquier número entre 1 y
+                 10 ¿qué tan dispuesto está a...?</div>
+            <div>
+                <table class="table table-hover fiftyfifty">
+                    <tbody>
+                        <tr><td>{{form.dispuesto_a_confiar.label}}</td><td>{{form.dispuesto_a_confiar}}</td></tr>
+                        <tr><td>{{form.dispuesto_a_compartir.label}}</td><td>{{form.dispuesto_a_compartir}}</td></tr>
+                        <tr><td>{{form.dispuesto_a_regresar_favor.label}}</td><td>{{form.dispuesto_a_regresar_favor}}</td></tr>
+                        <tr><td>{{form.dispuesto_a_castigar.label}}</td><td>{{form.dispuesto_a_castigar}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+        <li>
+            <div>{{form.que_tan_paciente_se_considera.label}}</div>
+            <div class="field-container">{{form.que_tan_paciente_se_considera}}</div>
+        </li>
+        <li>
+            <div>En una escala del 1 al 10, donde 1 es totalmente en desacuerdo y 10 totalmente de acuerdo, dígame qué tan de acuerdo está con
+                 cada uno de los siguientes enunciados. Usted puede escoger cualquier número entre 1 y 10.</div>
+            <div>
+                <table class="table table-hover fiftyfifty">
+                    <tbody>
+                        <tr><td>{{form.acuerdo_con_educacion_genera_ingreso.label}}</td><td>{{form.acuerdo_con_educacion_genera_ingreso}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_hombres_mas_trabajo_que_mujeres.label}}</td><td>{{form.acuerdo_con_hombres_mas_trabajo_que_mujeres}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_esposa_que_gana_mas_genera_dinero.label}}</td><td>{{form.acuerdo_con_esposa_que_gana_mas_genera_dinero}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_no_se_puede_confiar_en_nadie.label}}</td><td>{{form.acuerdo_con_no_se_puede_confiar_en_nadie}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_camino_de_mi_vida.label}}</td><td>{{form.acuerdo_con_camino_de_mi_vida}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_he_logrado_lo_que_merezco.label}}</td><td>{{form.acuerdo_con_he_logrado_lo_que_merezco}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_logros_suerte.label}}</td><td>{{form.acuerdo_con_logros_suerte}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_otros_deciden_por_mi.label}}</td><td>{{form.acuerdo_con_otros_deciden_por_mi}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_puedo_influir_en_condicion_social.label}}</td><td>{{form.acuerdo_con_puedo_influir_en_condicion_social}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_trabajar_duro_exito.label}}</td><td>{{form.acuerdo_con_trabajar_duro_exito}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_dudo_de_mi_mismo.label}}</td><td>{{form.acuerdo_con_dudo_de_mi_mismo}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_oportunidades_dadas_por_condiciones_sociales.label}}</td><td>{{form.acuerdo_con_oportunidades_dadas_por_condiciones_sociales}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_habilidades_mas_que_esfuerzo.label}}</td><td>{{form.acuerdo_con_habilidades_mas_que_esfuerzo}}</td></tr>
+                        <tr><td>{{form.acuerdo_con_poco_control_de_la_vida.label}}</td><td>{{form.acuerdo_con_poco_control_de_la_vida}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </li>
+    </ol>
+</div>
+
+<script>
+$(document).ready(function(){
+    $("form#form ol#questions li").click(function(evt){
+        var $li = $(evt.currentTarget);
+        var index = $li.index();
+        var offset = $li.parent("ol").attr("start");
+        if(!!offset)
+            index = index + parseInt(offset);
+        else
+            index = index + 1;
+        console.log(index);
+        $("#cuestion_clicked input").val(index);
+    });
+});
+</script>
+
+{% endblock %}

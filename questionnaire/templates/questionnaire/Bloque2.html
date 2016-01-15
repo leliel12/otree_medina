@@ -7,12 +7,17 @@
 
 {% block content %}
 <div id="questionnaire" class="row">
+
+    <span id="cuestion_clicked">
+        {{form.block_2_last_question_clicked}}
+    </span>
+
     <h4 class="text-center text-info">
         Ahora se realizaran algunas preguntas referidas al tiempo cuando usted tenía 14 años. Es muy importante que
         trate de recordar cómo vivía cuando usted tenía 14 años.
     </h4>
 
-    <ol start="13">
+    <ol id="questions" start="13">
         <li>
             <div>{{form.riqueza_hogar_14_anios.label}}</div>
             <div class="field-container">{{form.riqueza_hogar_14_anios}}</div>
@@ -205,6 +210,17 @@
 
 <script>
 $(document).ready(function(){
+    $("form#form ol#questions li").click(function(evt){
+        var $li = $(evt.currentTarget);
+        var index = $li.index();
+        var offset = $li.parent("ol").attr("start");
+        if(!!offset)
+            index = index + parseInt(offset);
+        else
+            index = index + 1;
+        $("#cuestion_clicked input").val(index);
+    });
+
     // hijos
     $("select#id_edad_de_primer_hijo").prop("disabled", true);
     $("select#id_edad_tuvo_primer_hijo").prop("disabled", true);

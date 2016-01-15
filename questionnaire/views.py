@@ -23,6 +23,8 @@ class Bloque1(TimeOutMixin, Page):
 
     form_model = models.Player
     form_fields = [
+        "block_1_last_question_clicked",
+
         "satisfecho_con_la_vida",
         "cuartos_en_el_hogar", "cuantos_cuartos_se_usan_para_dormir",
         "habitantes",
@@ -52,6 +54,8 @@ class Bloque2(TimeOutMixin, Page):
 
     form_model = models.Player
     form_fields = [
+        "block_2_last_question_clicked",
+
         "riqueza_hogar_14_anios",
 
         "padre_trabajaba_14_anios", "madre_trabajaba_14_anios",
@@ -106,6 +110,8 @@ class Bloque3(TimeOutMixin, Page):
 
     form_model = models.Player
     form_fields = [
+        "block_3_last_question_clicked",
+
         "hogar_actual_vs_mexico",
 
         "cuanto_depende_de_usted_que_le_vaya_bien",
