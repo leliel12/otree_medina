@@ -147,7 +147,33 @@ class Bloque3(TimeOutMixin, Page):
         "acuerdo_con_puedo_influir_en_condicion_social",
         "acuerdo_con_trabajar_duro_exito", "acuerdo_con_dudo_de_mi_mismo",
         "acuerdo_con_oportunidades_dadas_por_condiciones_sociales",
-        "acuerdo_con_habilidades_mas_que_esfuerzo", "acuerdo_con_poco_control_de_la_vida"]
+        "acuerdo_con_habilidades_mas_que_esfuerzo", "acuerdo_con_poco_control_de_la_vida"
+
+        "que_tanto_es_es_reservado", "que_tanto_es_confiable", "que_tanto_es_flojo",
+        "que_tanto_es_relajado", "que_tanto_es_artista", "que_tanto_es_sociable",
+        "que_tanto_es_falla_en_los_demas", "que_tanto_es_nervioso",
+        "que_tanto_es_imaginador",
+
+        "que_tanto_lo_describe_ideas_me_distraen",
+        "que_tanto_lo_describe_contratiempos_desanima",
+        "que_tanto_lo_describe_persona_trabajadora",
+        "que_tanto_lo_describe_pierdo_interes",
+        "que_tanto_lo_describe_persigo_diferentes_metas",
+        "que_tanto_lo_describe_dificultades_para_concentracion",
+        "que_tanto_lo_describe_termino_lo_que_comienzo",
+        "que_tanto_lo_describe_efuerzo_en_mi_trabajo",
+        "que_tanto_lo_describe_malos_habitos",
+        "que_tanto_lo_describe_cosas_inapropiadas",
+        "que_tanto_lo_describe_resisto_tentaciones",
+        "que_tanto_lo_describe_me_arrepiento",
+        "que_tanto_lo_describe_hago_cosas_sin_pensar",
+
+        "apuesta_loteria_1000",
+
+        "donar_1000",
+
+        "pagan_100_esperar_3_meses",
+        "que_tanto_lo_describe_1_anio"]
 
 
 page_sequence = [Welcome, Bloque1, Bloque2, Bloque3]

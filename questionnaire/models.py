@@ -408,6 +408,90 @@ class Player(otree.models.BasePlayer):
         choices=RANGO_1_10, default=RANGO_1_10[0], widget=widgets.RadioSelectHorizontal(),
         verbose_name=("Tengo poco control sobre las cosas que suceden en mi vida"))
 
+    TOTALMENTE_MUCHO_REGULAR_POCO_NADA = ("---", "Totalmente", "Mucho", "Regular", "Poco", "Nada")
+    que_tanto_es_es_reservado = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Es reservado(a)"))
+    que_tanto_es_confiable = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Es generalmente confiable"))
+    que_tanto_es_flojo = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Tiende a ser flojo(a)"))
+    que_tanto_es_relajado = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Es relajado(a) o maneja bien el estrés"))
+    que_tanto_es_artista = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Tiene intereses artísticos"))
+    que_tanto_es_sociable = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Es extrovertido(a) o sociable"))
+    que_tanto_es_falla_en_los_demas = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Tiende a encontrar fallas en los demás"))
+    que_tanto_es_nervioso = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Se pone nervioso(a) fácilmente"))
+    que_tanto_es_imaginador = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Tiene una imaginación activa"))
+
+    que_tanto_lo_describe_ideas_me_distraen = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Algunas veces nuevas ideas y proyectos me distraen de mis proyectos e ideas anteriores"))
+    que_tanto_lo_describe_contratiempos_desanima = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Los contratiempos no me desaniman"))
+    que_tanto_lo_describe_persona_trabajadora = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Soy una persona muy trabajadora"))
+    que_tanto_lo_describe_pierdo_interes = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Me obsesiono con ideas o proyectos por un tiempo, pero pierdo el interés rápidamente."))
+    que_tanto_lo_describe_persigo_diferentes_metas = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Frecuentemente me pongo una meta pero más tarde persigo una diferente."))
+    que_tanto_lo_describe_dificultades_para_concentracion = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Tengo dificultades para mantener mi concentración en proyectos que toman más de unos cuantos meses en completarse."))
+    que_tanto_lo_describe_termino_lo_que_comienzo = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Termino todo lo que comienzo"))
+    que_tanto_lo_describe_efuerzo_en_mi_trabajo = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Pongo mucho esfuerzo en los trabajos que realizo"))
+    que_tanto_lo_describe_malos_habitos = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Me cuesta romper malos hábitos"))
+    que_tanto_lo_describe_cosas_inapropiadas = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Frecuentemente digo cosas inapropiadas"))
+    que_tanto_lo_describe_resisto_tentaciones = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Soy muy bueno para resistir tentaciones"))
+    que_tanto_lo_describe_me_arrepiento = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Hago cosas que se sienten bien en el momento pero después me arrepiento de ellas"))
+    que_tanto_lo_describe_hago_cosas_sin_pensar = models.CharField(
+        choices=TOTALMENTE_MUCHO_REGULAR_POCO_NADA, default=TOTALMENTE_MUCHO_REGULAR_POCO_NADA[0],
+        max_length=30, verbose_name=("Frecuentemente hago cosas sin pensar en todas las opciones"))
+
+    apuesta_loteria_1000 = models.PositiveIntegerField(
+        verbose_name=("Imagine un juego de lotería con diez boletos numerados del 1 al 10, cuyo premio al número ganador es de $1,000. ¿Cuánto estaría dispuesto a pagar por un boleto para participar en ella?"),
+        min=0, max=1000, widget=widgets.SliderInput(), default=0)
+
+    donar_1000 = models.PositiveIntegerField(
+        verbose_name=("Imagine la siguiente situación: El día de hoy usted recibe inesperadamente $1,000. ¿Cuánto consideraría donar a una buena causa?"),
+        min=0, max=1000, widget=widgets.SliderInput(), default=0)
+
+    pagan_100_esperar_3_meses = models.PositiveIntegerField(
+        verbose_name=("¿Cuánto le tendrían que pagar dentro de tres meses para que pueda esperar este tiempo?"), default=0)
+    que_tanto_lo_describe_1_anio = models.PositiveIntegerField(
+        verbose_name=("Y ahora, ¿cuánto le tendrían que pagar dentro de un año para que pueda esperar ese tiempo?"), default=0)
+
+
+
 
 
 
