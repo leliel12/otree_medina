@@ -28,7 +28,7 @@ class Section11(TimeOutMixin, Page):
 
     process_form_on_timeout = True
 
-    timeout_seconds = 3 * 60  - 20
+    timeout_seconds = 90
 
     form_model = models.Player
     form_fields = ["dispuesto_a_apostar"]
@@ -39,7 +39,7 @@ class Section11(TimeOutMixin, Page):
 
 class Section11Result(Page):
 
-    timeout_seconds = 60
+    timeout_seconds = 20
 
     def _set_auto_submit_values(self):
         pass
@@ -48,7 +48,7 @@ class Section11Result(Page):
 class Section12(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60  - 20
+    timeout_seconds = 120
 
     form_model = models.Player
     form_fields = [
@@ -72,7 +72,7 @@ class Section12(TimeOutMixin, Page):
 
 class Section12Result(Page):
 
-    timeout_seconds = 60
+    timeout_seconds = 30
 
     def vars_for_template(self):
         parts = self.player.caso_seleccionado_para_12.split("_")

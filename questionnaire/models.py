@@ -71,15 +71,15 @@ class Player(otree.models.BasePlayer):
         verbose_name=("Y de esos cuartos, ¿cuántos usan para dormir?"), min=1, default=1)
 
     habitantes = models.PositiveIntegerField(
-        widget=widgets.SliderInput(), max=50,
+        widget=widgets.SliderInput(), max=20,
         verbose_name=("¿Cuántas personas viven en su hogar contando ancianos y niños?"), min=1, default=1)
 
     focos = models.PositiveIntegerField(
-        widget=widgets.SliderInput(), max=100,
+        widget=widgets.SliderInput(), max=50,
         verbose_name=(
             "Contando todos los focos que utiliza para iluminar su hogar, "
             "incluyendo los de techos, paredes y lámparas de buró o piso, "
-            "dígam, ¿Cuántos focos tiene en su vivienda?"), min=1, default=1)
+            "dígame, ¿Cuántos focos tiene en su vivienda?"), min=1, default=1)
 
     con_quien_vive = models.CharField(
         verbose_name=("¿Con quién vive actualmente?"), max_length=255, default="---",
@@ -120,8 +120,8 @@ class Player(otree.models.BasePlayer):
         widget=widgets.RadioSelectHorizontal(), default=False)
 
     altura = models.FloatField(
-        verbose_name=("Aproximadamente, ¿qué estatura tiene usted?"),
-        min=0, max=2.5, widget=widgets.SliderInput(attrs={'step': '0.01'}), default=0)
+        verbose_name=("Aproximadamente, ¿qué estatura tiene usted? (en metros)"),
+        min=0, widget=widgets.SliderInput(attrs={'step': '0.01', 'max': '2.5'}), default=0)
 
     peso = models.PositiveIntegerField(
         verbose_name=("Aproximadamente, ¿qué peso tiene usted? (en kilogramos)"),
@@ -141,9 +141,9 @@ class Player(otree.models.BasePlayer):
         widget=widgets.RadioSelectHorizontal(), default=False)
 
     edad_padre = models.PositiveIntegerField(
-        choices=range(1, 101), default=1)
+        choices=range(30, 101), default=30)
     edad_madre = models.PositiveIntegerField(
-        choices=range(1, 101), default=1)
+        choices=range(30, 101), default=30)
 
     padre_habla_dialecto_indigena = models.BooleanField(
         widget=widgets.RadioSelectHorizontal(), default=False)
@@ -221,7 +221,7 @@ class Player(otree.models.BasePlayer):
         max_length=20, default="---",
         choices=["---", "Excelente", "Buena", "Regular", "Mala", "Muy mala"])
 
-    FAMILIA_FRECUENCIA = ("Siempre", "Frecuentemente", "Pocas", "veces", "Nunca", "Omitir")
+    FAMILIA_FRECUENCIA = ("Siempre", "Frecuentemente", "Pocas veces", "Nunca", "Omitir")
     familia_frecuencia_insultos_14_anios = models.CharField(
         verbose_name=("¿Con qué frecuencia ocurrían INSULTOS, GRITOS o AMENAZAS en su familia?"),
         max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
@@ -493,10 +493,10 @@ class Player(otree.models.BasePlayer):
         min=0, max=1000, widget=widgets.SliderInput(), default=0)
 
     pagan_100_esperar_3_meses = models.PositiveIntegerField(
-        min=0, max=100000,  widget=widgets.SliderInput(),
+        min=50000, max=100000,  widget=widgets.SliderInput(),
         verbose_name=("¿Cuánto le tendrían que pagar dentro de tres meses para que pueda esperar este tiempo?"), default=0)
     que_tanto_lo_describe_1_anio = models.PositiveIntegerField(
-        min=0, max=100000,  widget=widgets.SliderInput(),
+        min=50000, max=100000,  widget=widgets.SliderInput(),
         verbose_name=("Y ahora, ¿cuánto le tendrían que pagar dentro de un año para que pueda esperar ese tiempo?"), default=0)
 
     # bloque 4

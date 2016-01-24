@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import os
 from os import environ
 
@@ -130,13 +133,13 @@ SESSION_CONFIG_DEFAULTS = {
 SESSION_CONFIGS = [
      {
         'name': 'section1',
-        'display_name': "Section 1",
+        'display_name': u"Sección 1",
         'num_demo_participants': 1,
         'app_sequence': ["section1"],
     },
     {
         'name': 'section3',
-        'display_name': "Section 3",
+        'display_name': u"Sección 3",
         'num_demo_participants': 1,
         'app_sequence': ["questionnaire"],
     }

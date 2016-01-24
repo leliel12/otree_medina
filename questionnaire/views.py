@@ -50,7 +50,7 @@ class Bloque1(TimeOutMixin, Page):
 class Bloque2(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60
+    timeout_seconds = 3 * 60 + 30
 
     form_model = models.Player
     form_fields = [
@@ -106,7 +106,7 @@ class Bloque2(TimeOutMixin, Page):
 class Bloque3(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60
+    timeout_seconds = 5 * 60
 
     form_model = models.Player
     form_fields = [
@@ -196,7 +196,7 @@ class Bloque4Mujeres(TimeOutMixin, Page):
 class Bloque5(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 3 * 60
+    timeout_seconds = 4 * 60
 
     form_model = models.Player
     form_fields = [

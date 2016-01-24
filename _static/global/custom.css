@@ -115,6 +115,12 @@ div#questionnaire table.fiftyfifty tr td:nth-child(2) {
     width: 50%;
 }
 
+
 div#questionnaire table.imagetable td {
     text-align: center;
+}
+
+div#questionnaire label.radio-inline {
+    font-size: 12px;
+    margin-left: 3px;
 }

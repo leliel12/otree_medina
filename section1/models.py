@@ -61,62 +61,62 @@ class Player(otree.models.BasePlayer):
 
     # section 1.2
     bolsa_o_25_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "25 ECUs con seguridad")])
     gano_bolsa_o_25_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_30_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "30 ECUs con seguridad")])
     gano_bolsa_o_30_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_35_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "35 ECUs con seguridad")])
     gano_bolsa_o_35_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_40_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "40 ECUs con seguridad")])
     gano_bolsa_o_40_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_45_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "45 ECUs con seguridad")])
     gano_bolsa_o_45_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_50_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "50 ECUs con seguridad")])
     gano_bolsa_o_50_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_55_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "55 ECUs con seguridad")])
     gano_bolsa_o_55_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_60_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "60 ECUs con seguridad")])
     gano_bolsa_o_60_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_65_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "65 ECUs con seguridad")])
     gano_bolsa_o_65_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_70_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "70 ECUs con seguridad")])
     gano_bolsa_o_70_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_75_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "75 ECUs con seguridad")])
     gano_bolsa_o_75_con_seguridad = models.PositiveIntegerField()
 
     bolsa_o_80_con_seguridad = models.CharField(
-        max_length=255, widget=widgets.RadioSelectHorizontal(),
+        max_length=255, widget=widgets.RadioSelectHorizontal(), default="bolsa",
         choices=[("bolsa", "Seleccionar de la bolsa"), ("seguridad", "80 ECUs con seguridad")])
     gano_bolsa_o_80_con_seguridad = models.PositiveIntegerField()
 
@@ -129,7 +129,7 @@ class Player(otree.models.BasePlayer):
         if self.dispuesto_a_apostar == 0:
             self.payoff += 100
         elif self.gano_apuesta:
-            self.payoff += self.dispuesto_a_apostar * 3
+            self.payoff += (self.dispuesto_a_apostar * 3) - self.dispuesto_a_apostar
         else:
             self.payoff -= self.dispuesto_a_apostar
 
