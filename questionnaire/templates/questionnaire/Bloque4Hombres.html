@@ -1,0 +1,72 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Bloque 4
+{% endblock %}
+
+{% block content %}
+<div id="questionnaire" class="row">
+    <span id="cuestion_clicked">
+        {{form.block_4_last_question_clicked}}
+    </span>
+
+    <h4 class="text-center text-info">
+        <strong>(Solo hombres)</strong>
+        Ahora se realizarán varias preguntas personales favor de contestarlas de forma honesta.
+    </h4>
+
+    <ol class="questions" start="44">
+        <li>
+            <div>{{form.trabaja_empresa_dependencia_publica.label}}</div>
+            <div class="field-container">{{form.trabaja_empresa_dependencia_publica}}</div>
+        </li>
+        <li>
+            <div>{{form.fecha_busqueda_empleo.label}}</div>
+            <div class="field-container">{{form.fecha_busqueda_empleo}}</div>
+        </li>
+        <li>
+            <div>{{form.fecha_fin_de_estudios.label}}</div>
+            <div class="field-container">{{form.fecha_fin_de_estudios}}</div>
+        </li>
+        <li>
+            <div>{{form.discriminacion_laboral.label}}</div>
+            <div class="field-container">{{form.discriminacion_laboral}}</div>
+        </li>
+        <li>
+            <div>{{form.que_tanto_presencio_discriminacion.label}}</div>
+            <div class="field-container">{{form.que_tanto_presencio_discriminacion}}</div>
+        </li>
+    </ol>
+
+</div>
+
+<link rel="stylesheet" href="{% static 'global/bootstrap-datepicker/css/bootstrap-datepicker3.css' %}">
+<script type="text/javascript" src="{% static 'global/bootstrap-datepicker/js/bootstrap-datepicker.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'global/bootstrap-datepicker/locales/bootstrap-datepicker.es.min.js' %}"></script>
+<script>
+$(document).ready(function(){
+    $(".field-container input[type=date]").prop("readonly", true);
+    $(".field-container input[type=date]").datepicker({
+        format: 'yyyy-mm-dd',
+        language: "es",
+        startDate: 0
+    });
+
+    $(".field-container input[type=date]").css("cursor", "pointer");
+
+
+    $("form#form ol.questions li").click(function(evt){
+        var $li = $(evt.currentTarget);
+        var index = $li.index();
+        var offset = $li.parent("ol").attr("start");
+        if(!!offset)
+            index = index + parseInt(offset);
+        else
+            index = index + 1;
+        $("#cuestion_clicked input").val(index);
+    });
+});
+</script>
+
+{% endblock %}
