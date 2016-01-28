@@ -26,10 +26,13 @@ links = {}
 
 keywords = ()
 
+
 class Constants:
     name_in_url = 'questionnaire'
     players_per_group = None
     num_rounds = 1
+    mujer = "Mujer"
+    hombre = "Hombre"
 
 
 
@@ -50,6 +53,10 @@ class Player(otree.models.BasePlayer):
     group = models.ForeignKey(Group, null=True)
     subsession = models.ForeignKey(Subsession)
     # </built-in>
+
+    genero = models.CharField(
+        max_length=30, widget=widgets.RadioSelectHorizontal(),
+        choices=[Constants.hombre, Constants.mujer], verbose_name="Seleccióne su género")
 
     # bloque 1
     block_1_last_question_clicked = models.IntegerField(default=0, widget=widgets.HiddenInput())
@@ -493,10 +500,10 @@ class Player(otree.models.BasePlayer):
         min=0, max=1000, widget=widgets.SliderInput(), default=0)
 
     pagan_100_esperar_3_meses = models.PositiveIntegerField(
-        min=50000, max=100000,  widget=widgets.SliderInput(),
+        min=1000, max=50000,  widget=widgets.SliderInput(),
         verbose_name=("¿Cuánto le tendrían que pagar dentro de tres meses para que pueda esperar este tiempo?"), default=0)
     que_tanto_lo_describe_1_anio = models.PositiveIntegerField(
-        min=50000, max=100000,  widget=widgets.SliderInput(),
+        min=1000, max=50000,  widget=widgets.SliderInput(),
         verbose_name=("Y ahora, ¿cuánto le tendrían que pagar dentro de un año para que pueda esperar ese tiempo?"), default=0)
 
     # bloque 4
@@ -519,6 +526,27 @@ class Player(otree.models.BasePlayer):
     duracion_del_sangrado = models.PositiveIntegerField(
         verbose_name=("¿Normalmente, cuántos días dura el sangrado?"),
         widget=widgets.SliderInput(), default=5, min=1, max=10)
+
+    # HOMBRES
+    trabaja_empresa_dependencia_publica = models.BooleanField(
+        verbose_name="Actualmente se encuentra trabajando en alguna empresa o dependencia pública?",
+        default=False, widget=widgets.RadioSelectHorizontal())
+
+    fecha_busqueda_empleo = models.DateField(
+        default=lambda: timezone.now().date(),
+        verbose_name="Aproximadamente, cuando fue la última fecha en que buscó empleo?.")
+    fecha_fin_de_estudios  = models.DateField(
+        default=lambda: timezone.now().date(),
+        verbose_name="Fecha en la que dio por terminados sus estudios?")
+
+    discriminacion_laboral = models.BooleanField(
+        verbose_name="Desde su perspectiva, alguna vez ha sido victima de discriminación laboral?",
+        default=False, widget=widgets.RadioSelectHorizontal())
+
+    que_tanto_presencio_discriminacion = models.PositiveIntegerField(
+        verbose_name=("En una escala del 1 al 10, que tanto ha presenciado discriminación, para usted o algún compañero, en el campo laboral?"),
+        widget=widgets.SliderInput(), default=5, min=1, max=10)
+
 
     # Bloque 5
     FIGURE_CHOICES_6 = ['---', '1', '2', '3', '4', '5', '6']

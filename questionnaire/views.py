@@ -13,7 +13,9 @@ def vars_for_all_templates(self):
 
 
 class Welcome(Page):
-    pass
+
+    form_model = models.Player
+    form_fields = ["genero"]
 
 
 class Bloque1(TimeOutMixin, Page):
@@ -192,6 +194,28 @@ class Bloque4Mujeres(TimeOutMixin, Page):
         "duracion_del_sangrado",
     ]
 
+    def is_displayed(self):
+        return self.player.genero == Constants.mujer
+
+
+class Bloque4Hombres(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    #~ timeout_seconds = 3 * 60
+
+    form_model = models.Player
+    form_fields = [
+        "block_4_last_question_clicked",
+        "trabaja_empresa_dependencia_publica",
+        "fecha_busqueda_empleo",
+        "fecha_fin_de_estudios",
+        "discriminacion_laboral",
+        "que_tanto_presencio_discriminacion",
+    ]
+
+    def is_displayed(self):
+        return self.player.genero == Constants.hombre
+
 
 class Bloque5(TimeOutMixin, Page):
 
@@ -206,5 +230,5 @@ class Bloque5(TimeOutMixin, Page):
 
 page_sequence = [
     Welcome, Bloque1, Bloque2, Bloque3,
-    Bloque4Mujeres,
+    Bloque4Mujeres, Bloque4Hombres,
     Bloque5]
