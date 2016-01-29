@@ -1,0 +1,35 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+<div class="content" id="section2">
+    <div class="row">
+        <h3>Usted es el Respondente</h3>
+        <div class="col-md-12">
+            <p>
+                El Proponente le ha ofrecido <strong class="text-info">{{proponente.n_simple_propuesta}}</strong>.
+                Determine si Acepta o Rechaza la oferta haciendo click en la opción
+                correspondiente.
+            </p>
+            {% formfield player.n_simple_respuesta with label="" %}
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-right">
+                <p>
+                    <small class="text-info">Haga click en el botón de siguiente cuando su respuesta este lista.</small>
+                </p>
+            </div>
+            <div class="pull-right">
+                {% next_button %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

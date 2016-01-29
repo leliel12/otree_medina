@@ -1,0 +1,28 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Resultados del Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+<div class="content" id="section2">
+    <div class="row">
+        <div class="col-md-12">
+            <p>
+                El Proponente ofertó <strong class="text-info">{{proponente.n_simple_propuesta}}</strong> y
+                {% if respondente.n_simple_respuesta != "Aceptar" %}
+                    el Respondente <strong class="text-success">Acepto</strong> la oferta.
+                {% else %}
+                    el Respondente <strong class="text-danger">Rechazó</strong> la oferta.
+                {% endif %}
+            </p>
+            <h4>Pagos finales de la Ronda {{ subsession.round_number }}:</h4>
+            <ul>
+                <li><strong>Proponente:</strong> {{proponente.payoff}} {% if proponente == player %} <span class="text-info">(Usted)</span>{% endif %}</li>
+                <li><strong>Respondente:</strong> {{respondente.payoff}} {% if respondente == player %} <span class="text-info">(Usted)</span>{% endif %}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

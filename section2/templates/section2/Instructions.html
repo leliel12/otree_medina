@@ -1,0 +1,61 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Sección 2
+{% endblock %}
+
+{% block content %}
+<style>
+h5 {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+</style>
+
+<div class="content">
+    <div class="row">
+        <h3>Instrucciones</h3>
+        <p>Durante esta secci&oacute;n jugar&aacute; <strong>14 rondas</strong> con diferentes jugadores presentes en la sala y <strong>2 rondas</strong> con jugadores virtuales.<strong>Ninguna pareja se repite en rondas distinta</strong>s. Las rondas consisten en decisiones individuales e independientes. En cadaronda usted deber&aacute; tomar una o varias decisiones en dos tipos de juegos, 8 rondas en <strong>Negociaci&oacute;n Simple</strong> y 8 rondas en<strong>Negociaci&oacute;n Empresa-Trabajador</strong>. Durante esta secci&oacute;n usted podr&aacute; acumular unidades ECU por sus respuestas. El pagototal de la secci&oacute;n ser&aacute; la suma de las ganancias individuales de cada ronda.</p>
+        <p>Antes de comenzar, se le asignar&aacute;n aleatoriamente dos papeles (<strong>Proponente</strong> o<strong> Respondente</strong>) para Negociaci&oacute;n 1 y(<strong>Trabajador</strong> o <strong>Empresa</strong>) para Negociaci&oacute;n 2. Usted mantendr&aacute; los papeles asignados durante todas las rondas de la sesi&oacute;n.</p>
+    </div>
+    <div class="row well">
+        <h4 class="text-center">Negociación Simple</h4>
+        <p>Para cada ronda usted ser&aacute; emparejado con otro jugador. Los dos jugadores tendr&aacute;n dos funciones diferentes: el<strong> Proponente</strong> o el <strong>Respondente</strong>. El objetivo del juego es distribuir un monto total de<strong> 200 ECUs</strong>.</p>
+        <h5>El papel del Proponente</h5>
+        <p>El Proponente tiene que determinar una cantidad de ECUs (<strong>200-X</strong>) entre 0 y 200 que desea mantener para s&iacute; mismo. El monto <strong>X</strong> es lo que el Proponente ofrece al Respondente.</p>
+        <h5>El papel del Respondente</h5>
+        <p>El Respondente ser&aacute; informado de la decisi&oacute;n del Proponente. Una vez que sepa esta informaci&oacute;n, el Respondente puede <strong>Aceptar</strong> o <strong>Rechazar</strong> esa oferta.</p>
+        <h5>Resultados</h5>
+        <p>Si el Respondente acepta la oferta del Proponente, el Proponente obtiene (<strong>200-X</strong>) ECUs y el Respondente obtiene<strong> X</strong> ECUs. Si el Respondente rechaza la oferta, ambas personas obtienen <strong>0</strong> ECUs.</p>
+        <h5>Ejemplo: </h5>
+        <ol>
+            <li>Queremos repartir 200 ECUs, el Proponente decide enviar 50 ECUs, el Respondente puede, entonces, aceptar o
+                rechazar la oferta. Si la acepta el Proponente obtiene 150 ECUs y el Respondente obtiene 50 ECUs, si la rechaza
+                ambos obtienen cero.</li>
+        </ol>
+    </div>
+
+
+    <div class="row well">
+        <h4 class="text-center">Negociación Empresa-Trabajador</h4>
+        <p>Para cada ronda usted ser&aacute; emparejado con otro participante. Los dos tendr&aacute;n funciones diferentes: <strong>Empresa</strong> o <strong>Trabajador</strong>. Su papel se mostrar&aacute; al momento de jugar. En este juego hay ofertas, contraofertas y varias etapas.</p>
+        <h5>El papel de la Empresa y el Trabajador</h5>
+        <p>La Empresa es contratada para realizar un proyecto con un pago final de <strong>200</strong> ECUs. Para honrar el contrato la Empresa debe contratar al <strong>&uacute;nico</strong> Trabajador(a) disponible. Antes de realizar el trabajo, la Empresa debe acordar con el Trabajador el salario que va a recibir. El juego consiste en que<strong> Empresa</strong> y <strong>Trabajador</strong> deben repartirse esos <strong>200</strong> ECUs. La Empresa realiza una oferta de salario <strong>X</strong> al Trabajador (de 0 a 200 ECUs).</p>
+        <p>El <strong>Trabajador</strong> decide si <strong>Acepta</strong> la oferta o bien, realiza una <strong>Contraoferta</strong>.</p>
+        <ul>
+            <li>Si el Trabajador Acepta la oferta, el juego termina. El ingreso final de la Empresa es (200-X) y el ingreso del Trabajador es X.</li>
+            <li>Si el Trabajador decide Contraofertar a la Empresa, tiene que escoger un salario mayor a X. Luego, la Empresa recibe esta Contraoferta y decide si Acepta el salario del Trabajador (donde el juego termina con los pagos correspondientes) o bien Contraofertar al Trabajador (la contraoferta de salario tiene que ser menor que lo propuesto por el trabajador pero mayor o igual que el salario original propuesto). El proceso continua hasta que alguno acepte la oferta o bien se acabe el juego s&uacute;bitamente.</li>
+            <li>Para simular condiciones reales, para cada etapa despu&eacute;s de la primera oferta de la Empresa, existe una probabilidad del 20% de que el juego termine s&uacute;bitamente. Si esto sucede, el pago para la Empresa ser&aacute; de 50 ECUs y para el Trabajador de 0 ECUs.</li>
+        </ul>
+        <h5>Ejemplos:</h5>
+        <ol>
+            <li>Se busca repartir 200 ECUs, la Empresa ofrece 50 y se queda con 150 ECUs. El Trabajador acepta la oferta y el juego termina en la primera etapa. Los pagos finales son 50 ECUs para el Trabajador y 150 ECUs para la empresa.</li>
+            <li>Se busca repartir 200 ECUs, la Empresa ofrece 50 y se queda con 150 ECUs. El Trabajador no acepta la oferta y realiza una contra oferta. Oferta 100 ECUs como salario y 100 ECUs para la Empresa. A pesar de la probabilidad de que el juego termine s&uacute;bitamente (20%), esto no sucede. La empresa acepta la contraoferta. Los pagos finales son 100 ECUs para el Trabajador y 100 ECUs para la empresa.</li>
+            <li>Se busca repartir 200 ECUs, la Empresa ofrece 50 y se queda con 150 ECUs. El Trabajador no acepta la oferta y realiza una contra oferta. Oferta 100 ECUs como salario y 100 ECUs para la Empresa. La probabilidad de que el juego termine s&uacute;bitamente (20%) no se cumple. La Empresa no acepta la oferta y realiza una contra oferta. 60 ECUs como salario y 140 ECUs para la ella. Sin embargo, la probabilidad de que el juego termine s&uacute;bitamente (20%) se cumple. Los pagos finales son 0 ECUs para el Trabajador y 50 ECUs para la empresa.</li>
+        </ol>
+    </div>
+
+</div>
+{% endblock %}
