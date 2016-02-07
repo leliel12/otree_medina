@@ -68,6 +68,14 @@ class Group(otree.models.BaseGroup):
             proponente.payoff = 0
             respondente.payoff = 0
 
+    def forzar_finalizacion_empresa_trabajador(self):
+        finalizar = random.randint(1, 100) <= 20
+        if finalizar:
+            empresa = self.get_player_by_role(Constants.empresa)
+            trabajador = self.get_player_by_role(Constants.trabajador)
+            empresa.n_empresa_trabajador_finalizacion_forzada = True
+            trabajador.n_empresa_trabajador_finalizacion_forzada = True
+
 
 class Player(otree.models.BasePlayer):
 
@@ -82,13 +90,26 @@ class Player(otree.models.BasePlayer):
         widget=widgets.RadioSelectHorizontal(),
         max_length=250, choices=["Aceptar", "Rechazar"], default="Aceptar")
 
+    n_empresa_trabajador_propuesta = models.CurrencyField(
+        verbose_name="¿Cuánto le gustaría ofrecer como salario?", choices=range(0, 201), default=0)
+    n_empresa_trabajador_propuestas = models.JSONField(default=[])
+
+    n_empresa_trabajador_respuesta = models.CharField(
+        widget=widgets.RadioSelectHorizontal(),
+        max_length=250, choices=["Aceptar", "Rechazar"], default="Aceptar")
+    n_empresa_trabajador_contrapropuesta = models.CurrencyField(
+        verbose_name="Contraoferta de salario:", choices=range(0, 201), default=0)
+    n_empresa_trabajador_contrapropuestas = models.JSONField(default=[])
+
+    n_empresa_trabajador_finalizacion_forzada = models.BooleanField(default=False)
+
     def role(self):
-        if self.subsession.get_current_game() == Constants.n_simple:
-            if self.id_in_group == 1:
-                return Constants.proponente
-            elif self.id_in_group == 2:
-                return Constants.respondente
-        elif self.subsession.get_current_game() == Constants.n_empresa_trabajador:
+        #~ if self.subsession.get_current_game() == Constants.n_simple:
+            #~ if self.id_in_group == 1:
+                #~ return Constants.proponente
+            #~ elif self.id_in_group == 2:
+                #~ return Constants.respondente
+        #~ elif self.subsession.get_current_game() == Constants.n_empresa_trabajador:
             if self.id_in_group == 1:
                 return Constants.empresa
             elif self.id_in_group == 2:

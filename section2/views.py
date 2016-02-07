@@ -23,7 +23,14 @@ class Instructions(Page):
         return self.subsession.round_number == 1
 
 
-class NegociacionSimpleProponente(Page):
+# =============================================================================
+# NEGOCIACION SIMPLE
+# =============================================================================
+
+class NegociacionSimpleProponente(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["n_simple_propuesta"]
@@ -40,7 +47,10 @@ class NegociacionSimpleEsperarProponente(WaitPage):
     body_text = "Usted es el Respondente y debe esperar al Proponente"
 
 
-class NegociacionSimpleRespondente(Page):
+class NegociacionSimpleRespondente(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     form_model =  models.Player
     form_fields = ["n_simple_respuesta"]
@@ -64,7 +74,10 @@ class NegociacionSimpleEsperarRespondente(WaitPage):
         self.group.set_negociacion_simple_payoff()
 
 
-class NegociacionSimpleRespuesta(Page):
+class NegociacionSimpleRespuesta(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     def vars_for_template(self):
         proponente = self.group.get_player_by_role(Constants.proponente)
@@ -72,9 +85,88 @@ class NegociacionSimpleRespuesta(Page):
         return {"respondente": respondente, "proponente": proponente}
 
 
-page_sequence = [
-    #Instructions,
+# =============================================================================
+# EMPRESA TRABAJADOR
+# =============================================================================
 
-    NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
-    NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
-    NegociacionSimpleRespuesta]
+class NegociacionEmpresaTrabajadorPropuesta(TimeOutMixin, Page):
+
+    #~ process_form_on_timeout = True
+    #~ timeout_seconds = 60
+
+    form_model = models.Player
+    form_fields = ["n_empresa_trabajador_propuesta"]
+
+    def is_displayed(self):
+        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_role = (self.player.role() == Constants.empresa)
+        return is_game and is_role
+
+    def before_next_page(self):
+        propuestas = self.player.n_empresa_trabajador_propuestas
+        propuestas.append(int(self.player.n_empresa_trabajador_propuesta))
+        self.player.n_empresa_trabajador_propuestas = propuestas
+
+
+class  NegociacionEmpresaTrabajadorEsperarEmpresa(WaitPage):
+
+    title_text = "Experando por la propuesta"
+    body_text = "Usted es el Trabajador y debe esperar a la Empresa"
+
+
+class NegociacionEmpresaTrabajadorRespuesta(TimeOutMixin, Page):
+
+    #~ process_form_on_timeout = True
+    #~ timeout_seconds = 60
+
+    form_model = models.Player
+    form_fields = ["n_empresa_trabajador_respuesta", "n_empresa_trabajador_contrapropuesta"]
+
+    def vars_for_template(self):
+        empresa = self.group.get_player_by_role(Constants.empresa)
+        return {
+            "propuesta": empresa.n_empresa_trabajador_propuesta,
+            "ganancia": 200 - empresa.n_empresa_trabajador_propuesta
+        }
+
+    def n_empresa_trabajador_contrapropuesta_choices(self):
+        empresa = self.group.get_player_by_role(Constants.empresa)
+        lower = empresa.n_empresa_trabajador_propuesta + 1
+        if lower > 200:
+            lower = 200
+        return list(range(lower, 201))
+
+    def is_displayed(self):
+        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_role = (self.player.role() == Constants.trabajador)
+        return is_game and is_role
+
+    def before_next_page(self):
+        contrapropuestas = self.player.n_empresa_trabajador_contrapropuestas
+        contrapropuestas.append(int(self.player.n_empresa_trabajador_contrapropuesta))
+        if self.player.n_empresa_trabajador_respuesta == "Rechazar":
+            self.group.forzar_finalizacion_empresa_trabajador()
+
+class  NegociacionEmpresaTrabajadorEsperarTrabajador(WaitPage):
+
+    title_text = "Experando por la respuesta"
+    body_text = "Usted es la Empresa y debe esperar al Trabajador"
+
+
+
+
+
+
+page_sequence = [
+    #~ Instructions,
+
+    #~ NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
+    #~ NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
+    #~ NegociacionSimpleRespuesta
+
+    NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
+    NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
+
+
+
+]
