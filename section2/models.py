@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # <standard imports>
 from __future__ import division
+import json
 from otree.db import models
 import otree.models
 from otree import widgets
@@ -58,6 +59,9 @@ class Group(otree.models.BaseGroup):
     subsession = models.ForeignKey(Subsession)
     # </built-in>
 
+    n_empresa_trabajador_finalizacion_forzada = models.BooleanField(default=False)
+    n_empresa_trabajador_fin_ciclo = models.BooleanField(default=False)
+
     def set_negociacion_simple_payoff(self):
         proponente = self.get_player_by_role(Constants.proponente)
         respondente = self.get_player_by_role(Constants.respondente)
@@ -70,11 +74,8 @@ class Group(otree.models.BaseGroup):
 
     def forzar_finalizacion_empresa_trabajador(self):
         finalizar = random.randint(1, 100) <= 20
-        if finalizar:
-            empresa = self.get_player_by_role(Constants.empresa)
-            trabajador = self.get_player_by_role(Constants.trabajador)
-            empresa.n_empresa_trabajador_finalizacion_forzada = True
-            trabajador.n_empresa_trabajador_finalizacion_forzada = True
+        if False and finalizar:
+            self.n_empresa_trabajador_finalizacion_forzada = False
 
 
 class Player(otree.models.BasePlayer):
@@ -92,16 +93,27 @@ class Player(otree.models.BasePlayer):
 
     n_empresa_trabajador_propuesta = models.CurrencyField(
         verbose_name="¿Cuánto le gustaría ofrecer como salario?", choices=range(0, 201), default=0)
-    n_empresa_trabajador_propuestas = models.JSONField(default=[])
+    n_empresa_trabajador_propuestas = models.TextField(default="[]")
 
     n_empresa_trabajador_respuesta = models.CharField(
         widget=widgets.RadioSelectHorizontal(),
         max_length=250, choices=["Aceptar", "Rechazar"], default="Aceptar")
     n_empresa_trabajador_contrapropuesta = models.CurrencyField(
         verbose_name="Contraoferta de salario:", choices=range(0, 201), default=0)
-    n_empresa_trabajador_contrapropuestas = models.JSONField(default=[])
+    n_empresa_trabajador_contrapropuestas = models.TextField(default="[]")
 
     n_empresa_trabajador_finalizacion_forzada = models.BooleanField(default=False)
+
+    def add_propuesta(self, v):
+        lista = json.loads(self.n_empresa_trabajador_propuestas)
+        lista.append(int(v))
+        self.n_empresa_trabajador_propuestas = json.dumps(lista)
+
+    def add_contrapropuesta(self, v):
+        lista = json.loads(self.n_empresa_trabajador_contrapropuestas)
+        lista.append(int(v))
+        self.n_empresa_trabajador_contrapropuestas = json.dumps(lista)
+
 
     def role(self):
         #~ if self.subsession.get_current_game() == Constants.n_simple:

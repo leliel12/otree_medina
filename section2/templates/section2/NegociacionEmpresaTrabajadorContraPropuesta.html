@@ -8,17 +8,18 @@
 {% block content %}
 <div class="content" id="section2">
     <div class="row">
-        <h3>Usted es el Trabajador</h3>
+        <h3>Usted es la Empresa</h3>
         <div class="col-md-12">
             <p>
-               La Empresa ha ofrecido como salario <strong>{{propuesta}}</strong> ECUs y ha decidido quedarse con <strong>{{ganancia}}</strong>. Determine si
-                Acepta o Rechaza la oferta haciendo click en el recuadro correspondiente.
+               El Trabajador(a) ha contra ofertado <strong>{{contrapropuesta}}</strong> como salario. Determine si Acepta o Rechaza la oferta haciendo click en
+                el recuadro correspondiente.
             </p>
-            {% formfield player.n_empresa_trabajador_respuesta %}
+            {% formfield player.n_empresa_trabajador_respuesta with label=""%}
         </div>
     </div>
     <div class="row" id="respuesta" style="display:none">
-        <p>{% formfield player.n_empresa_trabajador_contrapropuesta %}</p>
+        <h4 class="text-warning">Existe 20% de probabilidad de que la negociación termine súbitamente cuando de click en el botón de Siguiente.</h4>
+        <p>{% formfield player.n_empresa_trabajador_propuesta %}</p>
     </div>
 
     <div class="row">
@@ -50,6 +51,7 @@
         });
 
         $aceptar.click();
+
     });
 </script>
 {% endblock %}
