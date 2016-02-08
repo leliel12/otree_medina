@@ -91,14 +91,14 @@ class NegociacionSimpleRespuesta(TimeOutMixin, Page):
 
 class NegociacionEmpresaTrabajadorPropuesta(TimeOutMixin, Page):
 
-    #~ process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["n_empresa_trabajador_propuesta"]
 
     def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
         is_role = (self.player.role() == Constants.empresa)
         return is_game and is_role
 
@@ -114,8 +114,8 @@ class  NegociacionEmpresaTrabajadorEsperarEmpresa(WaitPage):
 
 class NegociacionEmpresaTrabajadorRespuesta(TimeOutMixin, Page):
 
-    #~ process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["n_empresa_trabajador_respuesta", "n_empresa_trabajador_contrapropuesta"]
@@ -135,7 +135,7 @@ class NegociacionEmpresaTrabajadorRespuesta(TimeOutMixin, Page):
         return list(range(lower, 201))
 
     def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
         is_role = (self.player.role() == Constants.trabajador)
         return is_game and is_role
 
@@ -176,7 +176,7 @@ class NegociacionEmpresaTrabajadorContraPropuesta(TimeOutMixin, Page):
         return list(range(lower, upper))
 
     def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
         is_role = (self.player.role() == Constants.empresa)
         in_cicle = not self.group.n_empresa_trabajador_fin_ciclo
         return is_game and is_role and in_cicle
@@ -197,8 +197,8 @@ class NegociacionEmpresaTrabajadorEsperarNuevaPropuestaEmpresa(WaitPage):
 
 class NegociacionEmpresaTrabajadorRespuestaContraPropuesta(TimeOutMixin, Page):
 
-    #~ process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["n_empresa_trabajador_respuesta", "n_empresa_trabajador_contrapropuesta"]
@@ -219,7 +219,7 @@ class NegociacionEmpresaTrabajadorRespuestaContraPropuesta(TimeOutMixin, Page):
         return list(range(lower, 201))
 
     def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
         is_role = (self.player.role() == Constants.trabajador)
         in_cicle = not self.group.n_empresa_trabajador_fin_ciclo
         return is_game and is_role and in_cicle
@@ -266,6 +266,7 @@ class NegociacionEmpresaResolveResult(WaitPage):
             self.group.n_empresa_trabajador_fin_ciclo = True
         self.group.set_negociacion_empresa_trabajador_payoff()
 
+
 class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 
     def vars_for_template(self):
@@ -296,11 +297,11 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 
 
 page_sequence = [
-    #~ Instructions,
+    Instructions,
 
-    #~ NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
-    #~ NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
-    #~ NegociacionSimpleRespuesta
+    NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
+    NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
+    NegociacionSimpleRespuesta,
 
     NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
     NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador

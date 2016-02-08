@@ -91,8 +91,8 @@ class Group(otree.models.BaseGroup):
     def forzar_finalizacion_empresa_trabajador(self):
         finalizar = random.randint(1, 100) <= 20
         if False and finalizar:
-            self.n_empresa_trabajador_finalizacion_forzada = False
-            # self.n_empresa_trabajador_fin_ciclo = True
+            self.n_empresa_trabajador_finalizacion_forzada = True
+            self.n_empresa_trabajador_fin_ciclo = True
 
 
 class Player(otree.models.BasePlayer):
@@ -138,12 +138,12 @@ class Player(otree.models.BasePlayer):
         self.n_empresa_trabajador_contrapropuestas = json.dumps(lista)
 
     def role(self):
-        #~ if self.subsession.get_current_game() == Constants.n_simple:
-            #~ if self.id_in_group == 1:
-                #~ return Constants.proponente
-            #~ elif self.id_in_group == 2:
-                #~ return Constants.respondente
-        #~ elif self.subsession.get_current_game() == Constants.n_empresa_trabajador:
+        if self.subsession.get_current_game() == Constants.n_simple:
+            if self.id_in_group == 1:
+                return Constants.proponente
+            elif self.id_in_group == 2:
+                return Constants.respondente
+        elif self.subsession.get_current_game() == Constants.n_empresa_trabajador:
             if self.id_in_group == 1:
                 return Constants.empresa
             elif self.id_in_group == 2:
