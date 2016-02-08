@@ -194,11 +194,6 @@ class NegociacionEmpresaTrabajadorEsperarNuevaPropuestaEmpresa(WaitPage):
     title_text = "Experando por la propuesta"
     body_text = "Usted es el Trabajador y debe esperar a la Empresa"
 
-    def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
-        in_cicle = not self.group.n_empresa_trabajador_fin_ciclo
-        return is_game and in_cicle
-
 
 class NegociacionEmpresaTrabajadorRespuestaContraPropuesta(TimeOutMixin, Page):
 
@@ -242,11 +237,6 @@ class NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo(WaitPage):
     title_text = "Experando por la respuesta"
     body_text = "Usted es la Empresa y debe esperar al Trabajador"
 
-    def is_displayed(self):
-        is_game = True or (self.subsession.get_current_game() == Constants.n_empresa_trabajador)
-        in_cicle = not self.group.n_empresa_trabajador_fin_ciclo
-        return is_game and in_cicle
-
 
 to_cicle = [
     NegociacionEmpresaTrabajadorContraPropuesta, # EMPRESA PROPONE DENUEVO
@@ -255,11 +245,55 @@ to_cicle = [
     NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo, # EMPRESA ESPERA
 ]
 cicle = []
-for idx in range(50):
+for idx in range(10):
     cicle.extend(
         type("{}{}".format(cls.__name__, idx), (cls,), {}) for cls in to_cicle)
 
 globals().update({cls.__name__:cls for cls in cicle})
+
+
+# =============================================================================
+# FINAL
+# =============================================================================
+
+class NegociacionEmpresaResolveResult(WaitPage):
+    title_text = "Calculando resultado"
+    body_text = "Calculando resultado"
+
+    def after_all_players_arrive(self):
+        if self.group.n_empresa_trabajador_fin_ciclo == False:
+            self.group.n_empresa_trabajador_finalizacion_forzada =True
+            self.group.n_empresa_trabajador_fin_ciclo = True
+        self.group.set_negociacion_empresa_trabajador_payoff()
+
+class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
+
+    def vars_for_template(self):
+        fin_forzado = self.group.n_empresa_trabajador_finalizacion_forzada
+
+        empresa = self.group.get_player_by_role(Constants.empresa)
+        propuestas = empresa.all_propuestas()
+
+        trabajador = self.group.get_player_by_role(Constants.trabajador)
+        contrapropuestas = trabajador.all_contrapropuestas()
+        lineas = []
+        for idx, propuesta in enumerate(propuestas):
+            linea = {
+                "propuesta": c(propuesta),
+                "contrapropuesta": c(contrapropuestas[idx]) if len(contrapropuestas) > idx else None}
+            lineas.append(linea)
+        acepto_empresa = not fin_forzado and len(propuestas) == len(contrapropuestas)
+        acepto_trabajador = not fin_forzado and not acepto_empresa
+        return {
+            "fin_forzado": fin_forzado,
+            "empresa": empresa,
+            "trabajador": trabajador,
+            "lineas": lineas,
+            "acepto_empresa": acepto_empresa,
+            "acepto_trabajador": acepto_trabajador}
+
+
+
 
 page_sequence = [
     #~ Instructions,
@@ -270,4 +304,4 @@ page_sequence = [
 
     NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
     NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
-] + to_cicle + []
+] + cicle + [NegociacionEmpresaResolveResult, NegociacionEmpresaTrabajadorResult]

@@ -62,4 +62,5 @@ target/
 _bin/
 setuptools-*.zip
 _doc/20151125/.~lock.Inter-seccion2.docx#
+db.sqlite3*
 

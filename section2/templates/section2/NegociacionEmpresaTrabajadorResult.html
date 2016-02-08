@@ -1,0 +1,57 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Resultado {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+<div class="content" id="section2">
+    <div class="row">
+        <h4>Resumen</h4>
+        <ol>
+            {% for linea in lineas %}
+            <li>
+                {% if forloop.first %}
+                    La Empresa ofertó <strong>{{linea.propuesta}}</strong> como salario.
+                    El Trabajador
+                    {% if line.contrapropuesta == None %}
+                        <strong class="text-success">Acepto</strong>.
+                    {% else %}
+                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{line.contrapropuesta}} como salario.
+                    {% endif %}
+                {% else %}
+                    La Empresa <strong class="text-danger">Rechazo</strong> la oferta. Contra ofertó <strong>{{linea.propuesta}}</strong> como salario
+                    El Trabajador
+                    {% if line.contrapropuesta == None %}
+                        <strong class="text-success">Acepto</strong>
+                    {% else %}
+                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{line.contrapropuesta}} como salario
+                    {% endif %}
+                {% endif %}
+            </li>
+            {% endfor %}
+            {% if acepto_empresa %}
+                <li>La Empresa <strong class="text-success">Acepto</strong>.</li>
+            {% endif %}
+            {% if fin_forzado %}
+                <li><strong class="text-danger">La negociación terminó súbitamente!</strong></li>
+            {% endif %}
+        </ol>
+        <h4>Pagos finales de la Ronda {{ subsession.round_number }}:</h4>
+        <ul>
+            <li><strong>Empresa:</strong> {{empresa.payoff}}</li>
+            <li><strong>Trabajador:</strong> {{trabajador.payoff}}</li>
+        </ul>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pull-right">
+                {% next_button %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

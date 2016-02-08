@@ -72,10 +72,27 @@ class Group(otree.models.BaseGroup):
             proponente.payoff = 0
             respondente.payoff = 0
 
+    def set_negociacion_empresa_trabajador_payoff(self):
+        empresa = self.get_player_by_role(Constants.empresa)
+        trabajador = self.get_player_by_role(Constants.trabajador)
+        if self.n_empresa_trabajador_finalizacion_forzada:
+            empresa.payoff = c(50)
+            trabajador.payoff = 0
+        else:
+            propuestas = empresa.all_propuestas()
+            contrapropuestas = trabajador.all_contrapropuestas()
+            X = c(
+                contrapropuestas[-1]
+                if len(propuestas) == len(contrapropuestas) else
+                propuestas[-1])
+            trabajador.payoff = X
+            empresa.payoff = 200 - X
+
     def forzar_finalizacion_empresa_trabajador(self):
         finalizar = random.randint(1, 100) <= 20
         if False and finalizar:
             self.n_empresa_trabajador_finalizacion_forzada = False
+            # self.n_empresa_trabajador_fin_ciclo = True
 
 
 class Player(otree.models.BasePlayer):
@@ -104,16 +121,21 @@ class Player(otree.models.BasePlayer):
 
     n_empresa_trabajador_finalizacion_forzada = models.BooleanField(default=False)
 
+    def all_propuestas(self):
+        return json.loads(self.n_empresa_trabajador_propuestas)
+
     def add_propuesta(self, v):
-        lista = json.loads(self.n_empresa_trabajador_propuestas)
+        lista = self.all_propuestas()
         lista.append(int(v))
         self.n_empresa_trabajador_propuestas = json.dumps(lista)
 
+    def all_contrapropuestas(self):
+        return json.loads(self.n_empresa_trabajador_contrapropuestas)
+
     def add_contrapropuesta(self, v):
-        lista = json.loads(self.n_empresa_trabajador_contrapropuestas)
+        lista = self.all_contrapropuestas()
         lista.append(int(v))
         self.n_empresa_trabajador_contrapropuestas = json.dumps(lista)
-
 
     def role(self):
         #~ if self.subsession.get_current_game() == Constants.n_simple:
