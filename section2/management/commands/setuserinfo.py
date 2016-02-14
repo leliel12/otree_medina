@@ -40,6 +40,9 @@ class Command(BaseCommand):
             '--conf', dest="conf", action='store', type=argparse.FileType('r'),
             help="configuration CSV file"),
         parser.add_argument(
+            '--host', dest="host", action='store', default="localhost:8000",
+            help="host where the project is running"),
+        parser.add_argument(
             '--out', dest="out", action='store', type=argparse.FileType('w'),
             help="output csv file")
 
@@ -49,10 +52,15 @@ class Command(BaseCommand):
         logger.warning("To few users info: Default name for Participant '{}'".format(idx))
         return "Participant {}".format(idx), None
 
-    def handle(self, sessioncode, conf, out, **options):
+    def link(self, participant, host):
+        return "http://{}{}".format(host, participant._start_url())
+
+    def handle(self, sessioncode, conf, host, out, **options):
         session = Session.objects.get(code=sessioncode)
         users_info = list(csv.reader(conf))
+        writer = csv.writer(out)
         for idx, participant in enumerate(session.participant_set.all()):
+            url = self.link(participant, host)
             name, avatar = self.next_user_info(users_info, idx)
             players = (
                 participant.section1_player.all(),
@@ -62,7 +70,4 @@ class Command(BaseCommand):
                 player.player_name = name
                 player.avatar = avatar
                 player.save()
-
-
-
-
+            writer.writerow([name, avatar, url])
