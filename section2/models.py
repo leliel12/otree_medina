@@ -52,13 +52,6 @@ class Subsession(otree.models.BaseSubsession):
             by_role[p.id_in_group].append(p)
         return dict(by_role)
 
-    def combs(self, by_role):
-        combs = []
-        for p1 in by_role[1]:
-            for p2 in by_role[2]:
-                combs.append((p1, p2))
-        return combs
-
     def to_key(self, p1, p2):
         return p1.participant_id, p2.participant_id
 
@@ -105,7 +98,6 @@ class Subsession(otree.models.BaseSubsession):
                         selected.append((p1, p2))
                         used.update(key)
             self.set_groups(selected)
-
 
     def get_current_game(self):
         if self.round_number <= Constants.n_simple_rounds[-1]:
@@ -161,6 +153,8 @@ class Player(otree.models.BasePlayer):
     group = models.ForeignKey(Group, null=True)
     subsession = models.ForeignKey(Subsession)
     # </built-in>
+
+    avatar = models.CharField(max_length=255)
 
     n_simple_propuesta = models.CurrencyField(
         choices=range(0, 201), verbose_name="¿Cuánto le gustaría ofrecer?", default=0)
