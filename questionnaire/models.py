@@ -54,6 +54,9 @@ class Player(otree.models.BasePlayer):
     subsession = models.ForeignKey(Subsession)
     # </built-in>
 
+    player_name = models.CharField(max_length=255)
+    avatar = models.CharField(max_length=255)
+
     genero = models.CharField(
         max_length=30, widget=widgets.RadioSelectHorizontal(),
         choices=[Constants.hombre, Constants.mujer], verbose_name="Seleccióne su género")

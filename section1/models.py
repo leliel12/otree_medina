@@ -53,6 +53,9 @@ class Player(otree.models.BasePlayer):
     subsession = models.ForeignKey(Subsession)
     # </built-in>
 
+    player_name = models.CharField(max_length=255)
+    avatar = models.CharField(max_length=255)
+
     # section 1.1
     dispuesto_a_apostar = models.CurrencyField(
         default=0,

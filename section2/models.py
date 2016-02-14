@@ -154,6 +154,7 @@ class Player(otree.models.BasePlayer):
     subsession = models.ForeignKey(Subsession)
     # </built-in>
 
+    player_name = models.CharField(max_length=255)
     avatar = models.CharField(max_length=255)
 
     n_simple_propuesta = models.CurrencyField(
