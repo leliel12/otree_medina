@@ -11,7 +11,8 @@ from utils import TimeOutMixin
 
 
 def vars_for_all_templates(self):
-
+    if self.subsession.show_avatar()
+        return {"oponente": self.player.get_others_in_group()[0]}
     return {}
 
 

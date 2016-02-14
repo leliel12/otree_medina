@@ -9,6 +9,8 @@ from otree.common import Currency as c, currency_range
 import random
 # </standard imports>
 
+import os
+from django.conf import settings
 from collections import defaultdict, Counter
 
 
@@ -42,6 +44,12 @@ class Constants:
     empresa, trabajador = "Empresa", "Trabajador"
 
     initial_payoff = c(100)
+
+    default_avatar = os.path.join(settings.BASE_DIR, "_static", "global", "default_avatar.png")
+    default_avatar_b64 = "data:image/{};base64,{}".format(
+        default_avatar.rsplit(".", 1)[1].lower(),
+        open(default_avatar).read().encode("base64")
+    )
 
 
 class Subsession(otree.models.BaseSubsession):
@@ -203,3 +211,15 @@ class Player(otree.models.BasePlayer):
                 return Constants.empresa
             elif self.id_in_group == 2:
                 return Constants.trabajador
+
+    def avatarb64(self):
+        if not self.avatar:
+            return Constants.default_avatar_b64
+        if not hasattr(self, "_avatarb64"):
+            path = os.path.join(settings.BASE_DIR, "participants_conf", self.avatar)
+            with open(path) as fp:
+                self._avatarb64 = "data:image/{};base64,{}".format(
+                    self.avatar.rsplit(".", 1)[1].lower(),
+                    fp.read().encode("base64")
+                )
+        return self._avatarb64
