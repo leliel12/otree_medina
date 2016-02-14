@@ -261,13 +261,17 @@ class NegociacionEmpresaResolveResult(WaitPage):
     body_text = "Calculando resultado"
 
     def after_all_players_arrive(self):
-        if self.group.n_empresa_trabajador_fin_ciclo == False:
-            self.group.n_empresa_trabajador_finalizacion_forzada =True
-            self.group.n_empresa_trabajador_fin_ciclo = True
-        self.group.set_negociacion_empresa_trabajador_payoff()
+        if self.subsession.get_current_game() == Constants.n_empresa_trabajador:
+            if self.group.n_empresa_trabajador_fin_ciclo == False:
+                self.group.n_empresa_trabajador_finalizacion_forzada =True
+                self.group.n_empresa_trabajador_fin_ciclo = True
+            self.group.set_negociacion_empresa_trabajador_payoff()
 
 
 class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
+
+    def is_displayed(self):
+        return self.subsession.get_current_game() == Constants.n_empresa_trabajador
 
     def vars_for_template(self):
         fin_forzado = self.group.n_empresa_trabajador_finalizacion_forzada
@@ -292,8 +296,6 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
             "lineas": lineas,
             "acepto_empresa": acepto_empresa,
             "acepto_trabajador": acepto_trabajador}
-
-
 
 
 page_sequence = [

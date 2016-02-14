@@ -9,6 +9,8 @@ from otree.common import Currency as c, currency_range
 import random
 # </standard imports>
 
+from collections import defaultdict, Counter
+
 
 doc = """
 Foo
@@ -44,8 +46,66 @@ class Constants:
 
 class Subsession(otree.models.BaseSubsession):
 
+    def players_by_role(self, players):
+        by_role = defaultdict(list)
+        for p in players:
+            by_role[p.id_in_group].append(p)
+        return dict(by_role)
+
+    def combs(self, by_role):
+        combs = []
+        for p1 in by_role[1]:
+            for p2 in by_role[2]:
+                combs.append((p1, p2))
+        return combs
+
+    def to_key(self, p1, p2):
+        return p1.participant_id, p2.participant_id
+
+    def usage_counts(self):
+        combs = []
+        for p_subssn in self.in_previous_rounds():
+            for g in self.get_groups():
+                p1, p2 = g.get_players()
+                combs.append(self.to_key(p1, p2))
+        return Counter(combs)
+
+    def to_players(self, key, by_role):
+        p1, p2 = None, None
+        for p in by_role[1]:
+            if p.participant_id == key[0]:
+                p1 = p
+                break
+        for p in by_role[2]:
+            if p.participant_id == key[1]:
+                p2 = p
+                break
+        return p1, p2
+
     def before_session_starts(self):
-        self.match_players("round_robin")
+        if self.round_number > 1:
+            counts = self.usage_counts()
+            players = self.get_players()
+            by_role = self.players_by_role(players)
+
+            used, selected = set(), []
+            for p1 in by_role[1]:
+                for p2 in by_role[2]:
+                    key = self.to_key(p1, p2)
+                    if key not in counts and key[0] not in used and key[1] not in used:
+                        selected.append((p1, p2))
+                        used.update(key)
+
+            if len(used) < len(players):
+                count_list = [e[0] for e in reversed(counts.most_common())]
+                while len(used) < len(players):
+                    key = count_list.pop(0)
+                    if key[0] not in used and key[1] not in used:
+                        p1, p2 = self.to_players(key, by_role)
+                        selected.append((p1, p2))
+                        used.update(key)
+            self.set_groups(selected)
+
 
     def get_current_game(self):
         if self.round_number <= Constants.n_simple_rounds[-1]:
