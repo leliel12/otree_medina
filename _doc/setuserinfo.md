@@ -54,7 +54,19 @@ avatares y nombres a usuarios sea algo complejo.
    donde `XXXXXXXX` es el código de su nueva session creada.
    
    Ahora si estamos listos para asignar los avatares, nombres y genero a los participantes de dicha session.
-6.
+6. El comando para ejecutar lo deseado es:
+
+   ```bash
+   $ otree setuserinfo --session XXXXXXXX --conf tuarchivo.csv --out salida.csv --host localhost:8000
+   ```
+   
+   Donde `XXXXXXXX` es el código devuelvo por listsession, `tuarchivo.csv` es el archivo donde relacionaron
+   los nombres, avatares, genero y emails, `salida.csv` les va a informar donde esta el link para cada
+   usuario, y `localhost:8000` es la ip y el puerto donde corre otree (esta ultima informacion se utiliza 
+   para construir los links que apareceran por pantalla y en `salida.csv`; es útil para distribuir comodamente
+   los links a los participantes)
+   
+   
 
    
    
