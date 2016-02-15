@@ -30,10 +30,19 @@ avatares y nombres a usuarios sea algo complejo.
    
    La segunda fila en adelante son los datos.
    
-   - **Nombre** es información para el científico y no se guarda internamente
+   - **Nombre** le da un nombre al participante para que al momento de extraer los resultados sea simple encontralos
    - **Avatar** tiene el path relativo al archivo de la imagen a partir del la carpeta `participant_conf`
    - **Gender** puede tener los valores `Hombre` o `Mujer` respetando la capitalización.
    - **Email** email es informacion para el científico y no se usa internamente
+4. Ahora es el momento de crear una session con el comando
+
+   ```bash
+   $ otree create_session fullgame 38
+   ```
+   
+   **38** es la cantidad de participantes del juego (38 es un ejemplo arbitrario). Lo que si ese numeor tiene que
+   ser igual a la cantidad de filas de su archivo de configuracion, sin contar la cabecera.
+   
    
    
    
