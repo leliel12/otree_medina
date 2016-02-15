@@ -9,7 +9,7 @@ avatares y nombres a usuarios sea algo complejo.
 ## Pasos
 
 1. Copiar el proyecto y desplegarlo como lo indica la
-   (documentación)[http://otree.readthedocs.org/en/latest/server.html]
+   [documentación](http://otree.readthedocs.org/en/latest/server.html)
 2. Copiar todas las imagenes de los usuarios a una carpeta dentro de
    `participants_conf`
    (ahi pueden ver la carpeta con los 38 avatares de los simpsons)
@@ -21,6 +21,6 @@ avatares y nombres a usuarios sea algo complejo.
    en los nombres de archivos, como todo esto es de informacióninterna no
    es relevante ser tan estrictos con el español.
 
-   Pueden usar como ejemplo de archivo el que brino en la carpeta (`conf.csv`)
-   https://github.com/leliel12/otree_medina/blob/master/participants_conf/conf.csv
-   (source)[https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv]
+   Pueden usar como ejemplo de archivo el que brino en la carpeta [`conf.csv`]
+   (https://github.com/leliel12/otree_medina/blob/master/participants_conf/conf.csv)
+   [source](https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv)
