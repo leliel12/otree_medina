@@ -13,9 +13,7 @@ def vars_for_all_templates(self):
 
 
 class Welcome(Page):
-
-    form_model = models.Player
-    form_fields = ["genero"]
+    pass
 
 
 class Bloque1(TimeOutMixin, Page):

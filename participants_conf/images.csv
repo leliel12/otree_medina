@@ -1,38 +1,39 @@
-Carl Carlson,simpsons/Carl_Carlson.png
-Barney,simpsons/Barney.jpg
-Dolphin Starbeam,simpsons/Dolphin_Starbeam.png
-Grandpa,simpsons/Grandpa.jpg
-Edna Krabappel,simpsons/Edna_Krabappel.jpg
-Duffman,simpsons/Duffman.jpg
-Martin Prince,simpsons/Martin_Prince.png
-Homer Simpson,simpsons/Homer.jpg
-Ned Flanders,simpsons/Ned_Flanders.jpg
-Jimbo Jones,simpsons/Jimbo_Jones.png
-Itchy,simpsons/Itchy.gif
-Comic Guy,simpsons/comic_guy.png
-Kearney,simpsons/Kearney.png
-Tod Flanders,simpsons/Flanders.jpg
-Mr Burns,simpsons/Mr_Burns.jpg
-Brandine Del Roy,simpsons/Brandine_Del_Roy.png
-Maggie,simpsons/Maggie.jpg
-Krusty,simpsons/Krusty.jpg
-Lisa Simpson,simpsons/LisaSimpson.gif
-Symour Skinner,simpsons/Skinner2.jpg
-Sideshow Bob,simpsons/Sideshow_Bob.jpg
-Rod Flanders,simpsons/Flanders3.jpg
-Nelson,simpsons/Nelson.jpg
-Blinky,simpsons/Blinky.jpg
-Smithers,simpsons/Smithers.gif
-Clancy Wiggum,simpsons/Clancy_Wiggum.png
-Maude Flanders,simpsons/Maude_Flanders.png
-Julius Hibbert,simpsons/Julius_Hibbert.png
-Milhouse,simpsons/Milhouse.jpg
-Bart,simpsons/bart.jpg
-Marge,simpsons/Marge.jpg
-Apu,simpsons/Apu.jpg
-Cat Woman,simpsons/Cat_Woman.jpg
-Skinner,simpsons/Skinner.jpg
-Cletus Del Roy,simpsons/Cletus_Del_Roy.png
-Moe,simpsons/Moe.jpg
-Willy,simpsons/Willy.jpg
-Mel,simpsons/Mel.jpg
+Name,Avatar,Gender,Email
+Carl Carlson,simpsons/Carl_Carlson.png,Hombre,ejemplo@email.com
+Barney,simpsons/Barney.jpg,Hombre,ejemplo@email.com
+Dolphin Starbeam,simpsons/Dolphin_Starbeam.png,Hombre,ejemplo@email.com
+Grandpa,simpsons/Grandpa.jpg,Hombre,ejemplo@email.com
+Edna Krabappel,simpsons/Edna_Krabappel.jpg,Mujer,ejemplo@email.com
+Duffman,simpsons/Duffman.jpg,Hombre,ejemplo@email.com
+Martin Prince,simpsons/Martin_Prince.png,Hombre,ejemplo@email.com
+Homer Simpson,simpsons/Homer.jpg,Mujer,ejemplo@email.com
+Ned Flanders,simpsons/Ned_Flanders.jpg,Hombre,ejemplo@email.com
+Jimbo Jones,simpsons/Jimbo_Jones.png,Hombre,ejemplo@email.com
+Itchy,simpsons/Itchy.gif,Hombre,ejemplo@email.com
+Comic Guy,simpsons/comic_guy.png,Hombre,ejemplo@email.com
+Kearney,simpsons/Kearney.png,Hombre,ejemplo@email.com
+Tod Flanders,simpsons/Flanders.jpg,Hombre,ejemplo@email.com
+Mr Burns,simpsons/Mr_Burns.jpg,Hombre,ejemplo@email.com
+Brandine Del Roy,simpsons/Brandine_Del_Roy.png,Mujer,ejemplo@email.com
+Maggie,simpsons/Maggie.jpg,Mujer,ejemplo@email.com
+Krusty,simpsons/Krusty.jpg,Hombre,ejemplo@email.com
+Lisa Simpson,simpsons/LisaSimpson.gif,Mujer,ejemplo@email.com
+Symour Skinner,simpsons/Skinner2.jpg,Hombre,ejemplo@email.com
+Sideshow Bob,simpsons/Sideshow_Bob.jpg,Hombre,ejemplo@email.com
+Rod Flanders,simpsons/Flanders3.jpg,Hombre,ejemplo@email.com
+Nelson,simpsons/Nelson.jpg,Hombre,ejemplo@email.com
+Blinky,simpsons/Blinky.jpg,Hombre,ejemplo@email.com
+Smithers,simpsons/Smithers.gif,Hombre,ejemplo@email.com
+Clancy Wiggum,simpsons/Clancy_Wiggum.png,Hombre,ejemplo@email.com
+Maude Flanders,simpsons/Maude_Flanders.png,Mujer,ejemplo@email.com
+Julius Hibbert,simpsons/Julius_Hibbert.png,Hombre,ejemplo@email.com
+Milhouse,simpsons/Milhouse.jpg,Hombre,ejemplo@email.com
+Bart,simpsons/bart.jpg,Hombre,ejemplo@email.com
+Marge,simpsons/Marge.jpg,Mujer,ejemplo@email.com
+Apu,simpsons/Apu.jpg,Hombre,ejemplo@email.com
+Cat Woman,simpsons/Cat_Woman.jpg,Mujer,ejemplo@email.com
+Skinner,simpsons/Skinner.jpg,Hombre,ejemplo@email.com
+Cletus Del Roy,simpsons/Cletus_Del_Roy.png,Hombre,ejemplo@email.com
+Moe,simpsons/Moe.jpg,Hombre,ejemplo@email.com
+Willy,simpsons/Willy.jpg,Hombre,ejemplo@email.com
+Mel,simpsons/Mel.jpg,Hombre,ejemplo@email.com

@@ -35,7 +35,6 @@ class Constants:
     hombre = "Hombre"
 
 
-
 class Subsession(otree.models.BaseSubsession):
     pass
 
