@@ -11,7 +11,7 @@
         <div class="col-md-12">
             <p>
                 El Proponente ofertó <strong class="text-info">{{proponente.n_simple_propuesta}}</strong> y
-                {% if respondente.n_simple_respuesta != "Aceptar" %}
+                {% if respondente.n_simple_respuesta == "Aceptar" %}
                     el Respondente <strong class="text-success">Acepto</strong> la oferta.
                 {% else %}
                     el Respondente <strong class="text-danger">Rechazó</strong> la oferta.

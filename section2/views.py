@@ -72,13 +72,17 @@ class NegociacionSimpleEsperarRespondente(WaitPage):
     body_text = "Esperando a que el Respondente acepte o rechace su propuesta"
 
     def after_all_players_arrive(self):
-        self.group.set_negociacion_simple_payoff()
+        if self.subsession.get_current_game() == Constants.n_simple:
+            self.group.set_negociacion_simple_payoff()
 
 
 class NegociacionSimpleRespuesta(TimeOutMixin, Page):
 
     process_form_on_timeout = True
     timeout_seconds = 60
+
+    def is_displayed(self):
+        return self.subsession.get_current_game() == Constants.n_simple
 
     def vars_for_template(self):
         proponente = self.group.get_player_by_role(Constants.proponente)
@@ -246,7 +250,7 @@ to_cicle = [
     NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo, # EMPRESA ESPERA
 ]
 cicle = []
-for idx in range(10):
+for idx in range(1):
     cicle.extend(
         type("{}{}".format(cls.__name__, idx), (cls,), {}) for cls in to_cicle)
 

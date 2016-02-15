@@ -148,6 +148,12 @@ SESSION_CONFIGS = [
         'display_name': u"Sección 3",
         'num_demo_participants': 1,
         'app_sequence': ["questionnaire"],
+    },
+    {
+        'name': 'fullgame',
+        'display_name': u"Full Game",
+        'num_demo_participants': 1,
+        'app_sequence': ["section1","section2", "questionnaire"],
     }
 ]
 

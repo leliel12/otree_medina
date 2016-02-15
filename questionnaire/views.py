@@ -199,7 +199,7 @@ class Bloque4Mujeres(TimeOutMixin, Page):
 class Bloque4Hombres(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 3 * 60
+    timeout_seconds = 3 * 60
 
     form_model = models.Player
     form_fields = [

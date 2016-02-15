@@ -36,11 +36,11 @@ class Constants:
     num_rounds = 16
 
     n_simple = u"Negociación Simple"
-    n_simple_rounds = [1, 8]
+    n_simple_rounds = [1, 3, 5, 7, 9, 11, 13, 15]
     proponente, respondente = "Proponente", "Respondente"
 
     n_empresa_trabajador = u"Negociación Empresa Trabajador"
-    n_empresa_trabajador_rounds = [9, 16]
+    n_empresa_trabajador_rounds = [2, 4, 6, 8, 10, 12, 14, 16]
     empresa, trabajador = "Empresa", "Trabajador"
 
     initial_payoff = c(100)
@@ -108,9 +108,12 @@ class Subsession(otree.models.BaseSubsession):
             self.set_groups(selected)
 
     def get_current_game(self):
-        if self.round_number <= Constants.n_simple_rounds[-1]:
+        if self.round_number in Constants.n_simple_rounds:
             return Constants.n_simple
         return Constants.n_empresa_trabajador
+
+    def show_avatar(self):
+        return self.round_number > 8
 
 
 class Group(otree.models.BaseGroup):
