@@ -24,3 +24,16 @@ avatares y nombres a usuarios sea algo complejo.
    Pueden usar como ejemplo de archivo el que brino en la carpeta [`conf.csv`]
    (https://github.com/leliel12/otree_medina/blob/master/participants_conf/conf.csv)
    ([source](https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv))
+   
+   La primer fila del archivo es la cabecera y cada celda debe tener **obligatoriamente** las columnas:
+   **Name**, **Avatar**, **Gender**, **Email** (es importante respetar la capitalización)
+   
+   La segunda fila en adelante son los datos.
+   
+   - **Nombre** es información para el científico y no se guarda internamente
+   - **Avatar** tiene el path relativo al archivo de la imagen a partir del la carpeta `participant_conf`
+   - **Gender** puede tener los valores `Hombre` o `Mujer` respetando la capitalización.
+   - **Email** email es informacion para el científico y no se usa internamente
+   
+   
+   
