@@ -40,8 +40,22 @@ avatares y nombres a usuarios sea algo complejo.
    $ otree create_session fullgame 38
    ```
    
-   **38** es la cantidad de participantes del juego (38 es un ejemplo arbitrario). Lo que si ese numeor tiene que
+   El número **38** es la cantidad de participantes del juego (38 es un ejemplo arbitrario). Lo que si ese numeor tiene que
    ser igual a la cantidad de filas de su archivo de configuracion, sin contar la cabecera.
+5. Ahora necesita saber como se llama su session, por lo cual tiene que ejecutar el comando `otree listsessions` el cual le
+   otorgara una salida parecida a:
+
+   ```
+   Name        Code       Participants   App Sequence                       
+   ----------- ---------- -------------- -----------------------------------
+   Full Game   XXXXXXXX   38             section1, section2, questionnaire
+   ```
+   
+   donde `XXXXXXXX` es el código de su nueva session creada.
+   
+   Ahora si estamos listos para asignar los avatares, nombres y genero a los participantes de dicha session.
+6.
+
    
    
    
