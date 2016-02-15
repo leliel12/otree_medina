@@ -131,24 +131,24 @@ SESSION_CONFIG_DEFAULTS = {
 
 
 SESSION_CONFIGS = [
-     {
-        'name': 'section1',
-        'display_name': u"Sección 1",
-        'num_demo_participants': 1,
-        'app_sequence': ["section1"],
-    },
-    {
-        'name': 'section2',
-        'display_name': u"Sección 2",
-        'num_demo_participants': 2,
-        'app_sequence': ["section2"],
-    },
-    {
-        'name': 'section3',
-        'display_name': u"Sección 3",
-        'num_demo_participants': 1,
-        'app_sequence': ["questionnaire"],
-    },
+     #~ {
+        #~ 'name': 'section1',
+        #~ 'display_name': u"Sección 1",
+        #~ 'num_demo_participants': 1,
+        #~ 'app_sequence': ["section1"],
+    #~ },
+    #~ {
+        #~ 'name': 'section2',
+        #~ 'display_name': u"Sección 2",
+        #~ 'num_demo_participants': 2,
+        #~ 'app_sequence': ["section2"],
+    #~ },
+    #~ {
+        #~ 'name': 'section3',
+        #~ 'display_name': u"Sección 3",
+        #~ 'num_demo_participants': 1,
+        #~ 'app_sequence': ["questionnaire"],
+    #~ },
     {
         'name': 'fullgame',
         'display_name': u"Full Game",
