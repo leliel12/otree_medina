@@ -5,6 +5,7 @@
 # =============================================================================
 # IMPORTS
 # =============================================================================
+from __future__ import print_function
 
 import csv
 import argparse
@@ -75,4 +76,5 @@ class Command(BaseCommand):
                 player.avatar = avatar
                 player.genero = gender
                 player.save()
+            print(name, avatar, gender, email, url)
             writer.writerow([name, avatar, gender, email, url])
