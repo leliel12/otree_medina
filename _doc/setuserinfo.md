@@ -23,4 +23,4 @@ avatares y nombres a usuarios sea algo complejo.
 
    Pueden usar como ejemplo de archivo el que brino en la carpeta [`conf.csv`]
    (https://github.com/leliel12/otree_medina/blob/master/participants_conf/conf.csv)
-   [source](https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv)
+   ([source](https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv))
