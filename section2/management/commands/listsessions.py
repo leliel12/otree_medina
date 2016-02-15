@@ -32,7 +32,6 @@ logger = logging.getLogger('otree')
 class Command(BaseCommand):
     help = ("List al available sessions")
 
-
     def handle(self, **options):
         for session in Session.objects.all():
             stype = session.session_type
