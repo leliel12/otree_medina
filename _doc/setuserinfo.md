@@ -21,7 +21,7 @@ avatares y nombres a usuarios sea algo complejo.
    en los nombres de archivos, como todo esto es de información interna no
    es relevante ser tan estrictos con el español.
 
-   Pueden usar como ejemplo de archivo el que brino en la carpeta [`conf.csv`]
+   Pueden usar como ejemplo de archivo el que brindo en la carpeta [`conf.csv`]
    (https://github.com/leliel12/otree_medina/blob/master/participants_conf/conf.csv)
    ([source](https://raw.githubusercontent.com/leliel12/otree_medina/master/participants_conf/conf.csv))
 

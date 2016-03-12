@@ -7,6 +7,13 @@
 
 {% block content %}
 <div class="content" id="section2">
+    {% if oponente %}
+    <div class="row">
+        <div class="col-md-12 pull-right">
+            <img alt="Embedded Image" class="avatar-medina well pull-right" src="{{oponente.avatarb64}}" />
+        </div>
+    </div>
+    {% endif %}
     <div class="row">
         <h3>Usted es el Trabajador</h3>
         <div class="col-md-12">
