@@ -15,18 +15,18 @@
                 {% if forloop.first %}
                     La Empresa ofertó <strong>{{linea.propuesta}}</strong> como salario.
                     El Trabajador
-                    {% if line.contrapropuesta == None %}
+                    {% if linea.contrapropuesta == None  and linea.final%}
                         <strong class="text-success">Acepto</strong>.
                     {% else %}
-                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{line.contrapropuesta}} como salario.
+                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{linea.contrapropuesta}} como salario.
                     {% endif %}
                 {% else %}
                     La Empresa <strong class="text-danger">Rechazo</strong> la oferta. Contra ofertó <strong>{{linea.propuesta}}</strong> como salario
                     El Trabajador
-                    {% if line.contrapropuesta == None %}
+                    {% if linea.contrapropuesta == None %}
                         <strong class="text-success">Acepto</strong>
                     {% else %}
-                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{line.contrapropuesta}} como salario
+                        <strong class="text-danger">No Acepto</strong> y contra ofertó {{linea.contrapropuesta}} como salario
                     {% endif %}
                 {% endif %}
             </li>

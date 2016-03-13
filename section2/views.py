@@ -287,11 +287,14 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
         trabajador = self.group.get_player_by_role(Constants.trabajador)
         contrapropuestas = trabajador.all_contrapropuestas()
         lineas = []
+        print propuestas, contrapropuestas
         for idx, propuesta in enumerate(propuestas):
             linea = {
                 "propuesta": c(propuesta),
-                "contrapropuesta": c(contrapropuestas[idx]) if len(contrapropuestas) > idx else None}
+                "contrapropuesta": c(contrapropuestas[idx]) if len(contrapropuestas) > idx else None,
+                "final": False}
             lineas.append(linea)
+        lineas[-1]["final"] = True
         acepto_empresa = not fin_forzado and len(propuestas) == len(contrapropuestas)
         acepto_trabajador = not fin_forzado and not acepto_empresa
         return {
@@ -304,11 +307,11 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 
 
 page_sequence = [
-    Instructions,
+    #~ Instructions,
 
-    NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
-    NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
-    NegociacionSimpleRespuesta,
+    #~ NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
+    #~ NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
+    #~ NegociacionSimpleRespuesta,
 
     NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
     NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
