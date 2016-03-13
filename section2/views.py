@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 from django.utils import timezone
+from django.conf import settings
 
 from . import models
 from ._builtin import Page, WaitPage
