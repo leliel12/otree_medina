@@ -184,6 +184,9 @@ class Group(otree.models.BaseGroup):
             trabajador.payoff = X
             empresa.payoff = 200 - X
 
+    def set_negociacion_empresa_trabajador_virtual_payoff(self, empresa):
+        empresa.payoff = 200 - empresa.n_empresa_trabajador_propuesta
+
     def forzar_finalizacion_empresa_trabajador(self):
         finalizar = random.randint(1, 100) <= 20
         if False and finalizar:

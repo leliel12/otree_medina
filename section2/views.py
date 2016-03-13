@@ -317,7 +317,7 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 class NegociacionSimpleVirtual(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["n_simple_propuesta"]
@@ -334,27 +334,59 @@ class NegociacionSimpleVirtual(TimeOutMixin, Page):
             self.group.set_negociacion_simple_virtual_payoff(self.player)
 
 
-
 class NegociacionSimpleVirtualRespuesta(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    timeout_seconds = 60
 
     def is_displayed(self):
         return (self.subsession.get_current_game() == Constants.n_simple_virtual)
 
 
+class NegociacionEmpresaTrabajadorVirtualPropuesta(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 60
+
+    form_model = models.Player
+    form_fields = ["n_empresa_trabajador_propuesta"]
+
+    def is_displayed(self):
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador_virtual)
+        return is_game
+
+    def vars_for_template(self):
+        return {"virtual_oponent": "virtual_ply/" + Constants.virtual_comb[self.player.virtual_oponent][1]}
+
+    def before_next_page(self):
+        if self.is_displayed():
+            self.group.set_negociacion_empresa_trabajador_virtual_payoff(self.player)
+
+
+
+class NegociacionEmpresaTrabajadorVirtualRespuesta(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    #~ timeout_seconds = 60
+
+    def is_displayed(self):
+        is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador_virtual)
+        return is_game
+
+
 
 page_sequence = [
-    #~ Instructions,
+    Instructions,
 
-    #~ NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
-    #~ NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
-    #~ NegociacionSimpleRespuesta,
+    NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
+    NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
+    NegociacionSimpleRespuesta,
 
-    #~ NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
-    #~ NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
-#~ ] + cicle + [
-    #~ NegociacionEmpresaResolveResult, NegociacionEmpresaTrabajadorResult,
+    NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
+    NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
+] + cicle + [
+    NegociacionEmpresaResolveResult, NegociacionEmpresaTrabajadorResult,
     NegociacionSimpleVirtual, NegociacionSimpleVirtualRespuesta,
+
+     NegociacionEmpresaTrabajadorVirtualPropuesta, NegociacionEmpresaTrabajadorVirtualRespuesta
 ]

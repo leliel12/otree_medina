@@ -1,0 +1,27 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Resultado {{ subsession.round_number }} of {{ Constants.num_rounds }}
+{% endblock %}
+
+{% block content %}
+<div class="content" id="section2">
+    <div class="row">
+        <h4>Resumen</h4>
+        <ol>
+            <li>
+                La Empresa ofertó <strong>{{player.n_empresa_trabajador_propuesta}}</strong> como salario.
+                El Trabajador <strong class="text-success">Acepto</strong>.
+            </li>
+        </ol>
+        <h4>Pagos finales de la Ronda {{ subsession.round_number }}:</h4>
+        <ul>
+            <li><strong>Empresa:</strong> {{player.payoff}}</li>
+            <li><strong>Trabajador:</strong> {{player.n_empresa_trabajador_propuesta}}</li>
+        </ul>
+
+    </div>
+
+</div>
+{% endblock %}
