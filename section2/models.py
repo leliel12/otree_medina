@@ -7,6 +7,7 @@ import otree.models
 from otree import widgets
 from otree.common import Currency as c, currency_range
 import random
+import itertools
 # </standard imports>
 
 import os
@@ -36,12 +37,28 @@ class Constants:
     num_rounds = 16
 
     n_simple = u"Negociación Simple"
-    n_simple_rounds = [1, 3, 5, 7, 9, 11, 13, 15]
+    n_simple_rounds = [1, 3, 5, 7, 9, 11, 13]
     proponente, respondente = "Proponente", "Respondente"
 
+    n_simple_virtual = u"Negociación Simple Virtual"
+    n_simple_virtual_rounds = [15]
+
     n_empresa_trabajador = u"Negociación Empresa Trabajador"
-    n_empresa_trabajador_rounds = [2, 4, 6, 8, 10, 12, 14, 16]
+    n_empresa_trabajador_rounds = [2, 4, 6, 8, 10, 12, 14]
     empresa, trabajador = "Empresa", "Trabajador"
+
+    n_empresa_trabajador_virtual = u"Negociación Empresa Trabajador Virtual"
+    n_empresa_trabajador_virtual_rounds = [16]
+
+    hombre_blanco, hombre_oscuro = "hombre_blanco.jpg", "hombre_oscuro.jpg"
+    mujer_blanca, mujer_oscura = "mujer_blanca.jpg", "mujer_oscura.jpg"
+
+    virtual_comb = [
+        "hombre_blanco_mujer_oscura": [hombre_blanco, mujer_oscura],
+        "hombre_oscuro_mujer_blanca": [hombre_oscuro, mujer_blanca],
+        "mujer_blanca_hombre_oscuro": [mujer_blanca, hombre_oscuro],
+        "mujer_oscura_hombre_blanco": [mujer_oscura, hombre_blanco],
+    ]
 
     initial_payoff = c(100)
 
@@ -84,9 +101,15 @@ class Subsession(otree.models.BaseSubsession):
         return p1, p2
 
     def before_session_starts(self):
-        if self.round_number > 1:
+        players = self.get_players()
+        if self.rouns == 1:
+            virtual_comb = list(Constants.virtual_comb.keys())
+            random.shuffle(virtual_comb)
+            repeat = itetrools.cycle(virtual_comb)
+            for p in players:
+                p.virtual_oponent = next(repeat)
+        else:
             counts = self.usage_counts()
-            players = self.get_players()
             by_role = self.players_by_role(players)
 
             used, selected = set(), []
@@ -110,7 +133,11 @@ class Subsession(otree.models.BaseSubsession):
     def get_current_game(self):
         if self.round_number in Constants.n_simple_rounds:
             return Constants.n_simple
-        return Constants.n_empresa_trabajador
+        elif self.round_number in Constants.n_simple_virtual_rounds:
+            return Constants.n_simple_virtual
+        elif self.round_number in Constants.n_empresa_trabajador_rounds:
+            return Constants.n_empresa_trabajador
+        return Constants.n_empresa_trabajador_virtual
 
     def show_avatar(self):
         return self.round_number > 8
@@ -167,6 +194,8 @@ class Player(otree.models.BasePlayer):
 
     player_name = models.CharField(max_length=255)
     avatar = models.CharField(max_length=255)
+
+    virtual_oponent = models.CharField(max_length=255, choices=list(Constants.virtual_comb.keys()))
 
     n_simple_propuesta = models.CurrencyField(
         choices=range(0, 201), verbose_name="¿Cuánto le gustaría ofrecer?", default=0)

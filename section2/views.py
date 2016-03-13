@@ -12,7 +12,7 @@ from utils import TimeOutMixin
 
 
 def vars_for_all_templates(self):
-    if self.subsession.show_avatar():
+    if self.subsession.show_avatar() and self.subsession.get_current_game() in (Constants.n_simple, Constants.n_empresa_trabajador):
         return {"oponente": self.player.get_others_in_group()[0]}
     return {}
 
