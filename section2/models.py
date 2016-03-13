@@ -53,12 +53,12 @@ class Constants:
     hombre_blanco, hombre_oscuro = "hombre_blanco.jpg", "hombre_oscuro.jpg"
     mujer_blanca, mujer_oscura = "mujer_blanca.jpg", "mujer_oscura.jpg"
 
-    virtual_comb = [
+    virtual_comb = {
         "hombre_blanco_mujer_oscura": [hombre_blanco, mujer_oscura],
         "hombre_oscuro_mujer_blanca": [hombre_oscuro, mujer_blanca],
         "mujer_blanca_hombre_oscuro": [mujer_blanca, hombre_oscuro],
         "mujer_oscura_hombre_blanco": [mujer_oscura, hombre_blanco],
-    ]
+    }
 
     initial_payoff = c(100)
 
