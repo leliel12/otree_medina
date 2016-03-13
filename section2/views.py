@@ -250,7 +250,7 @@ to_cicle = [
     NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo, # EMPRESA ESPERA
 ]
 cicle = []
-for idx in range(1):
+for idx in range(1 if settings.DEBUG else 10):
     cicle.extend(
         type("{}{}".format(cls.__name__, idx), (cls,), {}) for cls in to_cicle)
 
@@ -274,6 +274,9 @@ class NegociacionEmpresaResolveResult(WaitPage):
 
 
 class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
+
+    process_form_on_timeout = True
+    timeout_seconds = 60
 
     def is_displayed(self):
         return self.subsession.get_current_game() == Constants.n_empresa_trabajador
@@ -307,11 +310,11 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 
 
 page_sequence = [
-    #~ Instructions,
+    Instructions,
 
-    #~ NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
-    #~ NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
-    #~ NegociacionSimpleRespuesta,
+    NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
+    NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
+    NegociacionSimpleRespuesta,
 
     NegociacionEmpresaTrabajadorPropuesta, NegociacionEmpresaTrabajadorEsperarEmpresa,
     NegociacionEmpresaTrabajadorRespuesta, NegociacionEmpresaTrabajadorEsperarTrabajador
