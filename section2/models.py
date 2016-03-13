@@ -102,10 +102,10 @@ class Subsession(otree.models.BaseSubsession):
 
     def before_session_starts(self):
         players = self.get_players()
-        if self.rouns == 1:
+        if self.round_number == 1:
             virtual_comb = list(Constants.virtual_comb.keys())
             random.shuffle(virtual_comb)
-            repeat = itetrools.cycle(virtual_comb)
+            repeat = itertools.cycle(virtual_comb)
             for p in players:
                 p.virtual_oponent = next(repeat)
         else:
@@ -129,6 +129,9 @@ class Subsession(otree.models.BaseSubsession):
                         selected.append((p1, p2))
                         used.update(key)
             self.set_groups(selected)
+
+            for ply in players:
+                ply.virtual_oponent = ply.in_round(1).virtual_oponent
 
     def get_current_game(self):
         if self.round_number in Constants.n_simple_rounds:
@@ -161,6 +164,9 @@ class Group(otree.models.BaseGroup):
         else:
             proponente.payoff = 0
             respondente.payoff = 0
+
+    def set_negociacion_simple_virtual_payoff(self, proponente):
+        proponente.payoff = 200 - proponente.n_simple_propuesta
 
     def set_negociacion_empresa_trabajador_payoff(self):
         empresa = self.get_player_by_role(Constants.empresa)
