@@ -113,7 +113,7 @@ class Subsession(otree.models.BaseSubsession):
         return Constants.n_empresa_trabajador
 
     def show_avatar(self):
-        return self.round_number >= 8
+        return self.round_number > 8
 
 
 class Group(otree.models.BaseGroup):
