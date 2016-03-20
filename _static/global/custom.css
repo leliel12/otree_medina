@@ -130,3 +130,8 @@ div#questionnaire label.radio-inline {
     width: 155px;
     width: 255px;
 }
+
+
+.text-middle {
+    vertical-align: middle;
+}

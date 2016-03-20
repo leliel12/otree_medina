@@ -28,7 +28,7 @@ class Section11(TimeOutMixin, Page):
 
     process_form_on_timeout = True
 
-    timeout_seconds = 90
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["dispuesto_a_apostar"]

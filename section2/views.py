@@ -13,7 +13,8 @@ from utils import TimeOutMixin
 
 def vars_for_all_templates(self):
     if self.subsession.show_avatar() and self.subsession.get_current_game() in (Constants.n_simple, Constants.n_empresa_trabajador):
-        return {"oponente": self.player.get_others_in_group()[0]}
+        tipo_oponente = self.subsession.tipo_oponente(self.player)
+        return {"oponente": self.player.get_others_in_group()[0], "tipo_oponente": tipo_oponente}
     return {}
 
 
@@ -80,7 +81,6 @@ class NegociacionSimpleEsperarRespondente(WaitPage):
 class NegociacionSimpleRespuesta(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 60
 
     def is_displayed(self):
         return self.subsession.get_current_game() == Constants.n_simple
@@ -89,6 +89,12 @@ class NegociacionSimpleRespuesta(TimeOutMixin, Page):
         proponente = self.group.get_player_by_role(Constants.proponente)
         respondente = self.group.get_player_by_role(Constants.respondente)
         return {"respondente": respondente, "proponente": proponente}
+
+    @property
+    def timeout_seconds(self):
+        return self.subsession.get_result_timeout()
+
+
 
 
 # =============================================================================
@@ -277,7 +283,6 @@ class NegociacionEmpresaResolveResult(WaitPage):
 class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    timeout_seconds = 60
 
     def is_displayed(self):
         return self.subsession.get_current_game() == Constants.n_empresa_trabajador
@@ -308,6 +313,10 @@ class NegociacionEmpresaTrabajadorResult(TimeOutMixin, Page):
             "lineas": lineas,
             "acepto_empresa": acepto_empresa,
             "acepto_trabajador": acepto_trabajador}
+
+    @property
+    def timeout_seconds(self):
+        return self.subsession.get_result_timeout()
 
 
 # =============================================================================
@@ -342,6 +351,10 @@ class NegociacionSimpleVirtualRespuesta(TimeOutMixin, Page):
     def is_displayed(self):
         return (self.subsession.get_current_game() == Constants.n_simple_virtual)
 
+    @property
+    def timeout_seconds(self):
+        return self.subsession.get_result_timeout()
+
 
 class NegociacionEmpresaTrabajadorVirtualPropuesta(TimeOutMixin, Page):
 
@@ -367,16 +380,20 @@ class NegociacionEmpresaTrabajadorVirtualPropuesta(TimeOutMixin, Page):
 class NegociacionEmpresaTrabajadorVirtualRespuesta(TimeOutMixin, Page):
 
     process_form_on_timeout = True
-    #~ timeout_seconds = 60
+    timeout_seconds = 60
 
     def is_displayed(self):
         is_game = (self.subsession.get_current_game() == Constants.n_empresa_trabajador_virtual)
         return is_game
 
+    @property
+    def timeout_seconds(self):
+        return self.subsession.get_result_timeout()
+
 
 
 page_sequence = [
-    Instructions,
+    #~ Instructions,
 
     NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
     NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,

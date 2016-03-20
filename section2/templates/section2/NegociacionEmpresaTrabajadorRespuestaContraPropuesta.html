@@ -2,15 +2,20 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Round {{ subsession.round_number }} of {{ Constants.num_rounds }}
+    Ronda {{ subsession.round_number }} de {{ Constants.num_rounds }}
 {% endblock %}
 
 {% block content %}
 <div class="content" id="section2">
     {% if oponente %}
     <div class="row">
-        <div class="col-md-12 pull-right">
-            <img alt="Embedded Image" class="avatar-medina well pull-right" src="{{oponente.avatarb64}}" />
+        <div class="col-md-8 pull-right">
+            <table>
+                <tr>
+                    <td class="text-info lead">Este es la {{tipo_oponente}} Actual&nbsp&nbsp</td>
+                    <td><img alt="Embedded Image" class="avatar-medina well pull-right" src="{{oponente.avatarb64}}" /></td>
+                </tr>
+            </table>
         </div>
     </div>
     {% endif %}

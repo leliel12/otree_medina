@@ -143,12 +143,12 @@ SESSION_CONFIGS = [
         #~ 'num_demo_participants': 2,
         #~ 'app_sequence': ["section2"],
     #~ },
-    #~ {
-        #~ 'name': 'section3',
-        #~ 'display_name': u"Sección 3",
-        #~ 'num_demo_participants': 1,
-        #~ 'app_sequence': ["questionnaire"],
-    #~ },
+    {
+        'name': 'section3',
+        'display_name': u"Sección 3",
+        'num_demo_participants': 1,
+        'app_sequence': ["questionnaire"],
+    },
     {
         'name': 'fullgame',
         'display_name': u"Full Game",

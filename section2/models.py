@@ -145,6 +145,21 @@ class Subsession(otree.models.BaseSubsession):
     def show_avatar(self):
         return self.round_number > 8
 
+    def tipo_oponente(self, player):
+        current_game = self.get_current_game()
+        role = player.role()
+        if current_game == Constants.n_simple:
+            return Constants.respondente if role == Constants.proponente else Constants.proponente
+        elif current_game == Constants.n_empresa_trabajador:
+            return Constants.trabajador if role == Constants.empresa else Constants.empresa
+
+    def get_result_timeout(self):
+        if self.round_number <= 3:
+            return 30
+        elif self.round_number <= 6:
+            return 20
+        return 15
+
 
 class Group(otree.models.BaseGroup):
 
