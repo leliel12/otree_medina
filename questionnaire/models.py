@@ -238,7 +238,7 @@ class Player(otree.models.BasePlayer):
         verbose_name=("¿Con qué frecuencia los miembros de su familia se sentían muy cercanos los unos de los otros?"),
         max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
     frequencia_miedos_14_anios = models.CharField(
-        verbose_name=("¿Con qué frecuencia lo molestaban miedos o preocupaciones?"),
+        verbose_name=("¿Con qué frecuencia la/lo molestaban miedos o preocupaciones?"),
         max_length=20, choices=FAMILIA_FRECUENCIA, default=FAMILIA_FRECUENCIA[-1])
 
     madre_trabajo_por_ingreso_desde_que_nacio = models.BooleanField(
