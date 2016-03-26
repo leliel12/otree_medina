@@ -393,7 +393,7 @@ class NegociacionEmpresaTrabajadorVirtualRespuesta(TimeOutMixin, Page):
 
 
 page_sequence = [
-    #~ Instructions,
+    Instructions,
 
     NegociacionSimpleProponente, NegociacionSimpleEsperarProponente,
     NegociacionSimpleRespondente, NegociacionSimpleEsperarRespondente,
