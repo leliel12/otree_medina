@@ -24,7 +24,7 @@
                 Y el color de la bola seleccionada ha sido
                 <strong class="text-info">{{player.color_bola_al_azar|title}}</strong>
                 Usted
-                {% if player.color_bola_al_azar != "blanco" %}
+                {% if player.color_bola_al_azar == "blanco" %}
                     <strong class="text text-success">ha ganado {{100|c}}</strong>
                 {% else %}
                     <strong class="text text-danger">no ha ganado ECUs</strong>
