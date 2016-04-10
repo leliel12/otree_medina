@@ -19,7 +19,7 @@
             {% endif %}
         </p>
         <p>
-            <strong>Actualmente posee <span class="text-info">{{player.payoff}}</span></strong>
+            <strong>Actualmente posee <span class="text-info">{% if player.dispuesto_a_apostar == 0 %}{{100|c}}{% else %}{{player.payoff}}{% endif %}</span></strong>
         </p>
     </div>
 </div>

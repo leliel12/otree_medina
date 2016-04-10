@@ -46,7 +46,7 @@ class NegociacionSimpleProponente(TimeOutMixin, Page):
 
 class NegociacionSimpleEsperarProponente(WaitPage):
 
-    title_text = "Experando por la propuesta"
+    title_text = "Esperando por la propuesta"
     body_text = "Usted es el Respondente y debe esperar al Proponente"
 
 
@@ -120,7 +120,7 @@ class NegociacionEmpresaTrabajadorPropuesta(TimeOutMixin, Page):
 
 class  NegociacionEmpresaTrabajadorEsperarEmpresa(WaitPage):
 
-    title_text = "Experando por la propuesta"
+    title_text = "Esperando por la propuesta"
     body_text = "Usted es el Trabajador y debe esperar a la Empresa"
 
 
@@ -203,7 +203,7 @@ class NegociacionEmpresaTrabajadorContraPropuesta(TimeOutMixin, Page):
 
 class NegociacionEmpresaTrabajadorEsperarNuevaPropuestaEmpresa(WaitPage):
 
-    title_text = "Experando por la propuesta"
+    title_text = "Esperando por la propuesta"
     body_text = "Usted es el Trabajador y debe esperar a la Empresa"
 
 
@@ -257,7 +257,7 @@ to_cicle = [
     NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo, # EMPRESA ESPERA
 ]
 cicle = []
-for idx in range(1 if settings.DEBUG else 10):
+for idx in range(10):
     cicle.extend(
         type("{}{}".format(cls.__name__, idx), (cls,), {}) for cls in to_cicle)
 

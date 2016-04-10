@@ -68,6 +68,8 @@ class Constants:
         open(default_avatar).read().encode("base64")
     )
 
+    finalizar_muestra = ([True] * 20 + [False] * 80)
+
 
 class Subsession(otree.models.BaseSubsession):
 
@@ -203,8 +205,8 @@ class Group(otree.models.BaseGroup):
         empresa.payoff = 200 - empresa.n_empresa_trabajador_propuesta
 
     def forzar_finalizacion_empresa_trabajador(self):
-        finalizar = random.randint(1, 100) <= 20
-        if False and finalizar:
+        finalizar = random.choice(Constants.finalizar_muestra)
+        if finalizar:
             self.n_empresa_trabajador_finalizacion_forzada = True
             self.n_empresa_trabajador_fin_ciclo = True
 
