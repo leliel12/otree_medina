@@ -14,6 +14,8 @@ import os
 from django.conf import settings
 from collections import defaultdict, Counter
 
+from utils import round_robin
+
 
 doc = """
 Foo
@@ -111,25 +113,7 @@ class Subsession(otree.models.BaseSubsession):
             for p in players:
                 p.virtual_oponent = next(repeat)
         else:
-            counts = self.usage_counts()
-            by_role = self.players_by_role(players)
-
-            used, selected = set(), []
-            for p1 in by_role[1]:
-                for p2 in by_role[2]:
-                    key = self.to_key(p1, p2)
-                    if key not in counts and key[0] not in used and key[1] not in used:
-                        selected.append((p1, p2))
-                        used.update(key)
-
-            if len(used) < len(players):
-                count_list = [e[0] for e in reversed(counts.most_common())]
-                while len(used) < len(players):
-                    key = count_list.pop(0)
-                    if key[0] not in used and key[1] not in used:
-                        p1, p2 = self.to_players(key, by_role)
-                        selected.append((p1, p2))
-                        used.update(key)
+            selected = round_robin(self)
             self.set_groups(selected)
 
             for ply in players:
