@@ -129,9 +129,9 @@ class Player(otree.models.BasePlayer):
 
     def set_payoff_11(self):
         self.gano_apuesta = random.choice([True, False])
-        if self.dispuesto_a_apostar == 0:
-            self.payoff += 100
-        elif self.gano_apuesta:
+        #~ if self.dispuesto_a_apostar == 0:
+            #~ self.payoff += 100
+        if self.gano_apuesta:
             self.payoff += (self.dispuesto_a_apostar * 3) - self.dispuesto_a_apostar
         else:
             self.payoff -= self.dispuesto_a_apostar
