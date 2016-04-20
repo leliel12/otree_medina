@@ -70,7 +70,7 @@ class NegociacionSimpleRespondente(TimeOutMixin, Page):
 
 class NegociacionSimpleEsperarRespondente(WaitPage):
 
-    title_text = "Experando por la respuesta"
+    title_text = "Esperando por la respuesta"
     body_text = "Esperando a que el Respondente acepte o rechace su propuesta"
 
     def after_all_players_arrive(self):
@@ -160,7 +160,7 @@ class NegociacionEmpresaTrabajadorRespuesta(TimeOutMixin, Page):
 
 class NegociacionEmpresaTrabajadorEsperarTrabajador(WaitPage):
 
-    title_text = "Experando por la respuesta"
+    title_text = "Esperando por la respuesta"
     body_text = "Usted es la Empresa y debe esperar al Trabajador"
 
 
@@ -246,7 +246,7 @@ class NegociacionEmpresaTrabajadorRespuestaContraPropuesta(TimeOutMixin, Page):
 
 class NegociacionEmpresaTrabajadorEsperarTrabajadorDeNuevo(WaitPage):
 
-    title_text = "Experando por la respuesta"
+    title_text = "Esperando por la respuesta"
     body_text = "Usted es la Empresa y debe esperar al Trabajador"
 
 
