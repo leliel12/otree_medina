@@ -28,7 +28,7 @@ class Section11(TimeOutMixin, Page):
 
     process_form_on_timeout = True
 
-    #~ timeout_seconds = 60
+    timeout_seconds = 60
 
     form_model = models.Player
     form_fields = ["dispuesto_a_apostar"]
@@ -87,6 +87,6 @@ class Section12Result(Page):
 
 
 page_sequence = [
-    #~ Welcome, Instructions,
+    Welcome, Instructions,
     Section11, Section11Result,
     Section12, Section12Result]
