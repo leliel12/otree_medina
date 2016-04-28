@@ -14,7 +14,7 @@ import os
 from django.conf import settings
 from collections import defaultdict, Counter
 
-from utils import round_robin
+from section2.rrobin import round_robin_by_role
 
 
 doc = """
@@ -75,35 +75,6 @@ class Constants:
 
 class Subsession(otree.models.BaseSubsession):
 
-    def players_by_role(self, players):
-        by_role = defaultdict(list)
-        for p in players:
-            by_role[p.id_in_group].append(p)
-        return dict(by_role)
-
-    def to_key(self, p1, p2):
-        return p1.participant_id, p2.participant_id
-
-    def usage_counts(self):
-        combs = []
-        for p_subssn in self.in_previous_rounds():
-            for g in self.get_groups():
-                p1, p2 = g.get_players()
-                combs.append(self.to_key(p1, p2))
-        return Counter(combs)
-
-    def to_players(self, key, by_role):
-        p1, p2 = None, None
-        for p in by_role[1]:
-            if p.participant_id == key[0]:
-                p1 = p
-                break
-        for p in by_role[2]:
-            if p.participant_id == key[1]:
-                p2 = p
-                break
-        return p1, p2
-
     def before_session_starts(self):
         players = self.get_players()
         if self.round_number == 1:
@@ -112,12 +83,15 @@ class Subsession(otree.models.BaseSubsession):
             repeat = itertools.cycle(virtual_comb)
             for p in players:
                 p.virtual_oponent = next(repeat)
+                p.id_in_group_1()
         else:
-            selected = round_robin(self)
+            for ply in players:
+                in_round_1 = ply.in_round(1)
+                ply.virtual_oponent = in_round_1.virtual_oponent
+
+            selected = round_robin_by_role(self)
             self.set_groups(selected)
 
-            for ply in players:
-                ply.virtual_oponent = ply.in_round(1).virtual_oponent
 
     def get_current_game(self):
         if self.round_number in Constants.n_simple_rounds:
@@ -242,16 +216,21 @@ class Player(otree.models.BasePlayer):
         lista.append(int(v))
         self.n_empresa_trabajador_contrapropuestas = json.dumps(lista)
 
+    def id_in_group_1(self):
+        in_round_1 = self.in_round(1)
+        return in_round_1.id_in_group
+
     def role(self):
+        role_id = self.id_in_group_1()
         if self.subsession.get_current_game() == Constants.n_simple:
-            if self.id_in_group == 1:
+            if role_id == 1:
                 return Constants.proponente
-            elif self.id_in_group == 2:
+            elif role_id == 2:
                 return Constants.respondente
         elif self.subsession.get_current_game() == Constants.n_empresa_trabajador:
-            if self.id_in_group == 1:
+            if role_id == 1:
                 return Constants.empresa
-            elif self.id_in_group == 2:
+            elif role_id == 2:
                 return Constants.trabajador
 
     def avatarb64(self):

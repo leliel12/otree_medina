@@ -40,13 +40,6 @@ class TimeOutMixin(object):
         return self._redirect_to_page_the_user_should_be_on()
 
 
-def players_x_groups(subssn):
-    """Conver a subssn in a tuple of list of players
-
-    """
-    return tuple(g.get_players() for g in subssn.get_groups())
-
-
 def round_robin(subssn):
     """Try to generate every group of players with a lesser probabilty to mix
     the same players twice.
