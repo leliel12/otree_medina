@@ -30,7 +30,7 @@ VERSION = "0.3"
 # =============================================================================
 
 class Command(BaseCommand):
-    help = ("List al available sessions")
+    help = ("Show version of otree medina")
 
     def handle(self, **options):
         print("oTree Medina Version: " + VERSION)
