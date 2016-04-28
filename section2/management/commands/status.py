@@ -23,7 +23,7 @@ from otree.models import Session
 
 logger = logging.getLogger('otree')
 
-VERSION = "0.2"
+VERSION = "0.3"
 
 # =============================================================================
 # COMMND
